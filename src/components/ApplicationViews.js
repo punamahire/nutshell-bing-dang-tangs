@@ -23,7 +23,7 @@ export const ApplicationViews = ({setAuthUser, isAuthenticated, setIsAuthenticat
         <Route path="/events" element={""} />
       </Route>
 
-      <Route path="/login" element={<Login setAuthUser={setAuthUser}/>}/>
+      <Route path="/login" element={<Login setAuthUser={setAuthUser}/> }/>
       <Route path="/register" element={<Register/>}/>
     </Routes>
     </>
