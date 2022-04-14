@@ -8,7 +8,7 @@ import "./FriendForm.css";
 
 export const FriendForm = () => {
 
-
+  let currentUser = parseInt(sessionStorage.getItem("nutshell_user", JSON.stringify()))
 //----------------------------------------DEFINE navigate AS useNavigate FOR FUTURE USE--------------------------------------------------//
 
   const navigate = useNavigate()
@@ -18,7 +18,8 @@ export const FriendForm = () => {
 
   const [friend, setFriend] = useState({
     name: "",
-    email: ""
+    email: "",
+    userId: currentUser
   })
 
 
@@ -56,6 +57,13 @@ export const FriendForm = () => {
 	}
 
 
+//----------------------------------------CANCELS FORM AND NAVIGATES BACK TO FRIEND PAGE------------------------------------------------//
+
+  const ClickCancel = (event) => {
+			navigate("/friends")
+		}
+
+
 //----------------------------------------------GENERATE HTML FOR NEW FRIEND FORM-------------------------------------------------------//
 
   return (
@@ -73,10 +81,16 @@ export const FriendForm = () => {
 					<input type="text" id="email" onChange={handleControlledInputChange} required className="form-control" placeholder="Friend email" value={friend.email} />
 				</div>
 			</fieldset>
-      <button type="button" className="btn btn-primary"
-				onClick={ClickAddFriend}>
-				Add Friend
-          </button>
+      <div className="buttons">
+        <button type="button" className="btn btn-primary"
+          onClick={ClickAddFriend}>
+          Add Friend
+            </button>
+            <button type="button" className="btn btn-primary"
+          onClick={ClickCancel}>
+          Cancel
+            </button>   
+      </div>    
     </form>
   )
 }
