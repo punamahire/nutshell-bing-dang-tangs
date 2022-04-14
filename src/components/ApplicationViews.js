@@ -8,6 +8,11 @@ export const ApplicationViews = ({setAuthUser, isAuthenticated, setIsAuthenticat
 		return isAuthenticated ? <Outlet /> : <Navigate to="/login" />;
 	}
   
+  // const setAuthUser = (user) => {
+	// 	sessionStorage.setItem("nutshell_user", JSON.stringify(user))
+	// 	setIsAuthenticated(sessionStorage.getItem("nutshell_user") !== null)
+	// }
+  
   return (
     <>
     <Routes>
@@ -18,7 +23,7 @@ export const ApplicationViews = ({setAuthUser, isAuthenticated, setIsAuthenticat
         <Route path="/events" element={""} />
       </Route>
 
-      <Route path="/login" element={<Login setAuthUser={setAuthUser}/>}/>
+      <Route path="/login" element={<Login setAuthUser={setAuthUser}/> }/>
       <Route path="/register" element={<Register/>}/>
     </Routes>
     </>
