@@ -3,15 +3,15 @@ import { Routes, Route, Outlet, Navigate } from "react-router-dom"
 import { Login } from "./auth/Login"
 import { Register } from "./auth/Register"
 
-export const ApplicationViews = ({isAuthenticated, setIsAuthenticated}) => {
+export const ApplicationViews = ({setAuthUser, isAuthenticated, setIsAuthenticated}) => {
   const PrivateOutlet = () => {
 		return isAuthenticated ? <Outlet /> : <Navigate to="/login" />;
 	}
   
-  const setAuthUser = (user) => {
-		sessionStorage.setItem("nutshell_user", JSON.stringify(user))
-		setIsAuthenticated(sessionStorage.getItem("nutshell_user") !== null)
-	}
+  // const setAuthUser = (user) => {
+	// 	sessionStorage.setItem("nutshell_user", JSON.stringify(user))
+	// 	setIsAuthenticated(sessionStorage.getItem("nutshell_user") !== null)
+	// }
   
   return (
     <>
@@ -23,7 +23,7 @@ export const ApplicationViews = ({isAuthenticated, setIsAuthenticated}) => {
         <Route path="/events" element={""} />
       </Route>
 
-      <Route path="/login" element={<Login/>}/>
+      <Route path="/login" element={<Login setAuthUser={setAuthUser}/>}/>
       <Route path="/register" element={<Register/>}/>
     </Routes>
     </>
