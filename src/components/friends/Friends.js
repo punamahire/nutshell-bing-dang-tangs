@@ -24,10 +24,8 @@ export const Friends = () => {
   const [friends, setFriends] = useState([])
 
 
-  const filterFriends = (friend) => {
-    console.log(friend)
-    const filtered = friend.filter(friend.userId = currentUser)
-    console.log(filtered)
+  const filterFriends = (friends) => {
+    const filtered = friends.filter(friend => friend.userId === currentUser)
     return(filtered)
   }
 
@@ -35,21 +33,12 @@ export const Friends = () => {
 
 //-----------------------------------POPULATE EMPTY FRIENDS ARRAY WITH OBJECTS FROM THE API----------------------------------------------//
 
-  // const getFriends = () => {
-  //   //Pull Friends array from API...
-  //   return getAllFriends().then(allFriends => {
-  //     //...then populate empty friends array with what comes back.
-  //     filterFriends(allFriends).then(filteredFriends => {
-  //       setFriends(filteredFriends)
-  //     })
-  //   })
-  // }
-
   const getFriends = () => {
     //Pull Friends array from API...
     return getAllFriends().then(allFriends => {
       //...then populate empty friends array with what comes back.
-        setFriends(allFriends)
+      const filtered = filterFriends(allFriends)
+      setFriends(filtered)
     })
   }
 
@@ -64,7 +53,7 @@ useEffect(() => {
 
 const callDeleteFriend = (id) => {
   deleteFriend(id)
-  .then(() => getAllFriends().then(setFriends));
+  .then(() => getFriends())
 };
 
 
