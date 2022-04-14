@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react"
 import { useNavigate } from "react-router-dom"
 import { addFriend } from "./FriendManager"
+import "./FriendForm.css";
 
 
 //----------------------------------------------BROUGHT TO YOU BY HOUSTON SMITH---------------------------------------------------------//
@@ -59,7 +60,7 @@ export const FriendForm = () => {
 
   return (
     <form className="friendForm">
-      <h2>New Animal</h2>
+      <h2>New Friend</h2>
 			<fieldset>
 				<div className="form-group">
 					<label htmlFor="name">Friend Name:</label>
