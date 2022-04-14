@@ -27,8 +27,7 @@ export const Login = ({setAuthUser}) => {
 		existingUserCheck().then((exists) => {
 			if (exists) {
 				// The user id is saved under the key nutshell_user in session Storage. Change below if needed!
-				// sessionStorage.setItem("nutshell_user", exists.id);
-				setAuthUser(exists)
+				setAuthUser(exists.id);
 				navigate("/");
 			} else {
 				setExistDialog(true);
