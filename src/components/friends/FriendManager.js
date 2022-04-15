@@ -19,6 +19,14 @@ export const getAllUsers = () => {
 }
 
 
+//------------------------------------------------RETRIEVES A USER BY THEIR ID----------------------------------------------------------//
+
+export const getUserById = (userId) => {
+  //be sure your animals have good data and related to a location and customer
+  return fetch(`${URL}/users/${userId}`)
+  .then(res => res.json())
+}
+
 //--------------------------------------ADDS AN OBJECT TO THE FRIENDS ARRAY THROUGH THE API-----------------------------------------------//
 
 export const addFriend = (newFriend) => {

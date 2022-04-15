@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react"
 import { useNavigate } from "react-router-dom"
-import { addFriend, getAllUsers, getAllFriends } from "./FriendManager"
+import { addFriend, getAllUsers, getAllFriends, getUserById } from "./FriendManager"
 import "./FriendForm.css";
 
 
@@ -9,23 +9,24 @@ import "./FriendForm.css";
 export const FriendForm = () => {
 
 
-//------------------------------------------SAVE THE CURRENT USER'S ID AS A VARIABLE------------------------------------------------------//	
+//-------------------------------------SAVE THE CURRENT USER'S ID AND OBJECT AS VARIABLES------------------------------------------------//	
 
   let currentUser = parseInt(sessionStorage.getItem("nutshell_user", JSON.stringify()))
-
 
 //----------------------------------------DEFINE navigate AS useNavigate FOR FUTURE USE--------------------------------------------------//
 
   const navigate = useNavigate()
 
 
-//----------------------------------SET FRIENDS USERS AND CURRENT FRIENDS ARRAYS WITH EMPTY KEYS------------------------------------------//
+//------------------------SET FRIENDS, USERS, CURRENT FRIENDS, AND CURRENT USER ARRAYS WITH EMPTY KEYS------------------------------------//
 
   const [friend, setFriend] = useState({
     name: "",
     email: "",
     userId: currentUser
   })
+
+	const [currentUserObj, setCurrentUserObj] = useState({})
 
 	const [users, setUsers] = useState({})
 
@@ -41,6 +42,15 @@ export const FriendForm = () => {
   }, []);
 
 
+//------------------------------------POPULATE THE CURRENT USER OBJ ARRAY WITH THE CURRENT USER---------------------------------------------//
+
+	useEffect(() => {
+    getUserById(currentUser)
+    .then(user => {
+			console.log(user)
+      setCurrentUserObj(user)});
+  }, []);
+
 //-----------------------------------------POPULATE THE CURRENT FRIENDS ARRAY WITH FRIENDS FROM THE API---------------------------------------//	
 
 	const filterFriends = (friends) => {
@@ -53,7 +63,6 @@ export const FriendForm = () => {
     return getAllFriends().then(allFriends => {
       //...then populate empty friends array with what comes back.
       const filtered = filterFriends(allFriends)
-			console.log(filtered)
       setCurrentFriends(filtered)
     })
   }
@@ -90,9 +99,11 @@ export const FriendForm = () => {
 		//Checks the users array for the current entry and saves it as a variable
 		const isUser = (users.find(users => users.email === friendEmail))
 		const isFriend = (currentFriends.find(friend => friend.email === friendEmail))
+
     //Display error message if input fields are left empty
 		if (friendName === "" || friendEmail === "") {
 			window.alert("Please input a valid name and email address")
+
 		//Display error message if new friend is already on your friends list
 		}	else if (isFriend != undefined) {
 				if (friendName === isFriend.name && friendEmail === isFriend.email) { 
@@ -102,12 +113,18 @@ export const FriendForm = () => {
 				else {
 					window.alert("Please input a valid name and email address")
 				}
+
+		//Check to see if the added friend is yourself		
+		} else if (friendName === currentUserObj.name && friendEmail === currentUserObj.email) {
+			window.alert("You can't be friends with yourself, stoopid")
+
 		//Check to see if the added friend is a User 
 		} else if (friendName === isUser.name && friendEmail === isUser.email) {
 			//Invoke addFriend passing friend as an argument
 			//Navigate back to friends page
 			addFriend(friend)
 				.then(() => navigate("/friends"))
+
 		//Display error message if new friend does not exist
 			} else {
 			window.alert("Please input a valid name and email address")
