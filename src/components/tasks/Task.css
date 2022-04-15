@@ -10,8 +10,7 @@ main {
 
 .card-container {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
   margin-top: 2em;
 }
 
@@ -22,4 +21,13 @@ main {
   margin: 1em;
   width: 31%;
   padding: 1em;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+}
+
+.card-header input {
+  margin-right: 1em;
 }

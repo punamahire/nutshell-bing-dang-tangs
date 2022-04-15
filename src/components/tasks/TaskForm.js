@@ -23,7 +23,8 @@ export const TaskForm = () => {
 
   const [task, setTask] = useState({
     name: "",
-    description: "",
+    date: "",
+    isComplete: false,
     userId: currentUser,
   })
 
@@ -69,12 +70,12 @@ export const TaskForm = () => {
   const clickAddTask = (event) => {
 		//Prevents the browser from submitting the form
     event.preventDefault()
-		//Saves task name and description in variables
+		//Saves task name and date in variables
 		const taskName = task.name
-		const taskDescription = task.description
+		const taskDate = task.date
 	
     //Display error message if input fields are left empty
-		if (taskName === "" || taskDescription === "") {
+		if (taskName === "" || taskDate === "") {
 			window.alert("Please fill in the input fields")
 
 		//Otherwise add Task
@@ -101,14 +102,14 @@ export const TaskForm = () => {
       <h2>Create A New Task</h2>
 			<fieldset>
 				<div className="form-group">
-					<label htmlFor="name">Title:</label>
+					<label htmlFor="name">Task:</label>
 					<input type="text" id="name" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Task name" value={task.name} />
 				</div>
 			</fieldset>
       <fieldset>
 				<div className="form-group">
-					<label htmlFor="description">Description:</label>
-					<input type="text" id="description" onChange={handleControlledInputChange} required className="form-control" placeholder="Task description" value={task.description} />
+					<label htmlFor="date">Complete By:</label>
+					<input type="date" id="date" onChange={handleControlledInputChange} required className="form-control" placeholder="Event date" value={task.date} />
 				</div>
 			</fieldset>
       <div className="buttons">
@@ -120,7 +121,7 @@ export const TaskForm = () => {
           onClick={ClickCancel}>
           Cancel
             </button>   
-      </div>    
+      </div>     
     </form>
   )
 }
