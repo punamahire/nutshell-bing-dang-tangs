@@ -1,5 +1,16 @@
 
-.first-active-event {
-    background-color: bisque;
+.container-cards > :first-child {
     font-weight: bolder;
+}
+
+.container-cards > :first-child div {
+    background-color: beige;
+}
+
+.container-cards > :first-child .card {
+    width: 45em;
+}
+
+a {
+    text-decoration: none !important;
 }

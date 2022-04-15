@@ -34,6 +34,10 @@ export const EventAddForm = () => {
         const userObj = JSON.parse(sessionStorage.getItem("nutshell_user"))
 		eventObj.userId = userObj.id;
 
+        // save the date and time in the date object
+        // let eventDate = eventObj.date.split('T')[0]
+        // let eventTime = eventObj.date.split('T')[1]
+
 		if (eventObj.name === "" || eventObj.date === "" || eventObj.location === "") {
 			window.alert("Please enter name, date and location")
 		} else {
@@ -59,7 +63,7 @@ export const EventAddForm = () => {
 			<fieldset>
 				<div className="form-group">
 					<label htmlFor="date">Event date:</label>
-					<input type="datetime-local" id="date" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Event date" value={eventObj.date} />
+					<input type="datetime-local" min={new Date().toISOString().slice(0, -1)} id="date" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Event date" value={eventObj.date} />
 				</div>
 			</fieldset>
 			<fieldset>

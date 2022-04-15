@@ -8,7 +8,6 @@ export const Nutshell = () => {
 
     const setAuthUser = (user) => {
         sessionStorage.setItem("nutshell_user", JSON.stringify(user))
-        console.log(user);
         setIsAuthenticated(sessionStorage.getItem("nutshell_user") !== null)
     }
     

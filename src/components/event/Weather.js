@@ -11,23 +11,15 @@ export const Weather = ({ location, date }) => {
     const handleShowWeather = () => {
         // call external API to fetch weather for the event's date
         // if the event is too far in the future, fetch current weather data
-        console.log('coming in handle show weather');
-        console.log(location);
-        console.log(date);
         
-        if (new Date(date + ' 00:00:00') <= fourteenDaysAhead) {
-            getWeatherData(location, date).then(data => {
-            console.log(data)
-            setWeatherInfo(data);
-            console.log('final weather', weatherInfo); 
-        });
+        if (new Date(date) <= fourteenDaysAhead) {
+                getWeatherData(location, date).then(data => {
+                setWeatherInfo(data);
+            });
         } else {
-            getWeatherData(location, today).then(data => {
-            setWeatherInfo(data);
-            console.log(new Date(date + ' 00:00:00'));
-            console.log(fourteenDaysAhead)
-            console.log((new Date(date + ' 00:00:00') > fourteenDaysAhead));
-        })
+                getWeatherData(location, today).then(data => {
+                setWeatherInfo(data);
+            });
         }
         
     }
@@ -39,12 +31,13 @@ export const Weather = ({ location, date }) => {
     return (
         <> 
           { weatherInfo && 
-            (<li className="card">
+            (<div className="weather-card">
                 <div className="card-content">
                     {/* <picture>
                         <img className="card-img" src={`./images/puppy_${singleEvent.id}.png`} alt="My Dog" />
                     </picture> */
                     }
+                    <hr></hr>
                     <h3> 
                         <span className="card-petname">
                             {weatherInfo.location?.name}, {weatherInfo.location?.region}
@@ -53,7 +46,7 @@ export const Weather = ({ location, date }) => {
                     <p>Temperature: {weatherInfo.current?.temp_f}</p>
                     <p>Condition: {weatherInfo.current?.condition.text}</p>
                     <p>Feels Like: {weatherInfo.current?.feelslike_f}</p>
-                    { (new Date(date + ' 00:00:00') > fourteenDaysAhead) && 
+                    { (new Date(date) > fourteenDaysAhead) && 
                         <div>
                             <p>Weather forecast for the date of the event cannot be determined.</p> 
                             <p>Event is too far in the future.</p>
@@ -61,7 +54,7 @@ export const Weather = ({ location, date }) => {
                     }
                 
                 </div>
-            </li>)
+            </div>)
           } 
         </>
     );

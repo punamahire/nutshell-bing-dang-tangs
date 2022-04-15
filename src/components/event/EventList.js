@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { EventCard } from './EventCard';
-import { getAllEvents, deleteEvent, getWeatherData } from '../../modules/EventManager';
-import { Weather } from "./Weather";
+import { getAllEvents, deleteEvent } from '../../modules/EventManager';
+import "./EventCard.css"
 
 export const EventList = () => {
   
@@ -12,8 +12,30 @@ export const EventList = () => {
 
   const getEvents = () => {
     
+    let expiredEvents = []
+    let upcomingEvents = []
+    let eventsInOrder = []
     return getAllEvents().then(eventsFromAPI => {
-      setEvents(eventsFromAPI)
+
+        // move the expired events to the bottom of the list
+        // before updating the component's state
+        expiredEvents = eventsFromAPI.filter(evt => {
+            return ((new Date(evt.date) < new Date()))
+        })
+
+        upcomingEvents = eventsFromAPI.filter(evt => {
+            return ((new Date(evt.date) >= new Date()))
+        })
+
+        upcomingEvents.map(evt => {
+            eventsInOrder.push(evt)
+        })
+
+        expiredEvents.map(evt => {
+            eventsInOrder.push(evt)
+        })
+
+        setEvents(eventsInOrder)
     });
   };
 
@@ -38,7 +60,8 @@ export const EventList = () => {
             Add Event
         </Button>
     </section>
-    <ul className="container-cards">
+    <section className="card-holder">
+    <div className="container-cards">
       {events.map(event => 
         <EventCard 
           key={event.id} 
@@ -46,7 +69,8 @@ export const EventList = () => {
           handleDeleteEvent={handleDeleteEvent}
           />
       )}
-    </ul>
+    </div>
+    </section>
   </>
 
   );

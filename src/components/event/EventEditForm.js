@@ -66,7 +66,7 @@ export const EventEditForm = () => {
             <label htmlFor="name">Event name</label>
 
             <input
-              type="date"
+              type="datetime-local"
               required
               className="form-control"
               onChange={handleFieldChange}
