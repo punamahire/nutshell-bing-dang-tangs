@@ -3,13 +3,12 @@ import "./Event.css"
 import { Container, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Weather } from "./Weather";
-import { getWeatherData } from '../../modules/EventManager';
 
 export const EventCard = ({ singleEvent, handleDeleteEvent }) => {
 
     const [value, toggleValue] = useReducer(previous => !previous, false)
 
-    const isEventEditable = () => {
+    const isEventExpired = () => {
         if (new Date(singleEvent.date + ' 00:00:00') < new Date()) {
             return false
         }
@@ -29,13 +28,13 @@ export const EventCard = ({ singleEvent, handleDeleteEvent }) => {
           <p>Date: {singleEvent.date}</p>
           <p>Location: {singleEvent.location}</p>
 
-          {isEventEditable() &&
+          {isEventExpired() &&
             <Link to={`/events/${singleEvent.id}/edit`}>
                 <Button>Edit</Button> &nbsp;
             </Link>
           } 
           <Button type="button" onClick={() => handleDeleteEvent(singleEvent.id)}>Delete</Button> &nbsp;
-          {isEventEditable() &&
+          {isEventExpired() &&
               <Button type="button" onClick={() => toggleValue()}>Show Weather</Button>
           }
           {

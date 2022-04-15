@@ -14,7 +14,7 @@ export const Nutshell = () => {
     
     const clearUser = () => {
         sessionStorage.clear();
-        setIsAuthenticated(sessionStorage.getItem("kennel_customer") !== null)
+        setIsAuthenticated(sessionStorage.getItem("nutshell_user") !== null)
       }
     
 return (

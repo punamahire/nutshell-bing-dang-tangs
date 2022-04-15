@@ -59,7 +59,7 @@ export const EventAddForm = () => {
 			<fieldset>
 				<div className="form-group">
 					<label htmlFor="date">Event date:</label>
-					<input type="date" id="date" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Event date" value={eventObj.date} />
+					<input type="datetime-local" id="date" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Event date" value={eventObj.date} />
 				</div>
 			</fieldset>
 			<fieldset>

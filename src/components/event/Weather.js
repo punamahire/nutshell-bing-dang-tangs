@@ -32,7 +32,6 @@ export const Weather = ({ location, date }) => {
         
     }
 
-
     useEffect(() => {
         handleShowWeather();
     }, [])
