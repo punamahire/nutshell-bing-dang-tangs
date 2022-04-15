@@ -10,6 +10,7 @@ import { FriendForm } from "./friends/FriendForm"
 import { EventList } from "./event/EventList"
 import { EventAddForm } from "./event/EventAddForm"
 import { EventEditForm } from "./event/EventEditForm"
+import { Tasks } from "./tasks/Task.js"
 import "./event/EventAddEditForm.css"
 
 
@@ -32,7 +33,10 @@ export const ApplicationViews = ({setAuthUser, isAuthenticated, setIsAuthenticat
         <Route path="/friends/add" element={<FriendForm/>} />
 
         <Route path="/messages" element={""} />
-        <Route path="/tasks" element={""} />
+
+        <Route path="/tasks" element={<Tasks/>} />
+        <Route path="/friends/add" element={<Tasks/>} />
+
         <Route path="/events" element={<EventList/>} />
         <Route path="/events/create" element={<EventAddForm/>} />
         <Route path="/events/:eventId/edit" element={<EventEditForm/>} />
