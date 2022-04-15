@@ -11,6 +11,14 @@ export const getAllFriends = () => {
 }
 
 
+//-----------------------------------------RETRIEVES A LIST OF ALL USERS FROM THE API--------------------------------------------------//
+
+export const getAllUsers = () => {
+  return fetch (`${URL}/users`)
+    .then(response => response.json())
+}
+
+
 //--------------------------------------ADDS AN OBJECT TO THE FRIENDS ARRAY THROUGH THE API-----------------------------------------------//
 
 export const addFriend = (newFriend) => {
@@ -31,3 +39,4 @@ export const deleteFriend = id => {
     method: "DELETE"
   }).then(result => result.json())
 }
+
