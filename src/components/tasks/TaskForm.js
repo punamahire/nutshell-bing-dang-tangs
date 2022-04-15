@@ -19,7 +19,7 @@ export const TaskForm = () => {
   const navigate = useNavigate()
 
 
-//------------------------SET FRIENDS, USERS, CURRENT FRIENDS, AND CURRENT USER ARRAYS WITH EMPTY KEYS------------------------------------//
+//------------------------------------SET TASKS, USERS, AND CURRENT USER ARRAYS WITH EMPTY KEYS------------------------------------------//
 
   const [task, setTask] = useState({
     name: "",
@@ -64,7 +64,7 @@ export const TaskForm = () => {
 	}
 
 
-//---------------------------------CALL addTask FUNCTION AND NAVIGATE BACK TO FRIEND PAGE ON BUTTON CLICK----------------------------//
+//---------------------------------CALL addTask FUNCTION AND NAVIGATE BACK TO TASK PAGE ON BUTTON CLICK----------------------------------//
 
   const clickAddTask = (event) => {
 		//Prevents the browser from submitting the form
@@ -87,14 +87,14 @@ export const TaskForm = () => {
 	}
 
 
-//----------------------------------------CANCELS FORM AND NAVIGATES BACK TO FRIEND PAGE------------------------------------------------//
+//----------------------------------------CANCELS FORM AND NAVIGATES BACK TO TASK PAGE------------------------------------------------//
 
   const ClickCancel = (event) => {
 			navigate("/tasks")
 		}
 
 
-//----------------------------------------------GENERATE HTML FOR NEW FRIEND FORM-------------------------------------------------------//
+//----------------------------------------------GENERATE HTML FOR NEW TASK FORM-------------------------------------------------------//
 
   return (
     <form className="taskForm">
