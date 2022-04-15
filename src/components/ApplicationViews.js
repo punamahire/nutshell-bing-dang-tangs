@@ -7,6 +7,10 @@ import { ArticleForm } from "./article/ArticleForm"
 import { ArticleEditForm } from "./article/ArticleEditForm"
 import { Friends } from "./friends/Friends.js"
 import { FriendForm } from "./friends/FriendForm"
+import { EventList } from "./event/EventList"
+import { EventAddForm } from "./event/EventAddForm"
+import { EventEditForm } from "./event/EventEditForm"
+import "./event/EventAddEditForm.css"
 
 
 export const ApplicationViews = ({setAuthUser, isAuthenticated, setIsAuthenticated}) => {
@@ -29,7 +33,9 @@ export const ApplicationViews = ({setAuthUser, isAuthenticated, setIsAuthenticat
 
         <Route path="/messages" element={""} />
         <Route path="/tasks" element={""} />
-        <Route path="/events" element={""} />
+        <Route path="/events" element={<EventList/>} />
+        <Route path="/events/create" element={<EventAddForm/>} />
+        <Route path="/events/:eventId/edit" element={<EventEditForm/>} />
       </Route>
       <Route path="/articles" element={<ArticleList />} />
       <Route path="/articles/add" element={<ArticleForm />} />
