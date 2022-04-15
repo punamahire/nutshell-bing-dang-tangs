@@ -4,6 +4,7 @@ import { Login } from "./auth/Login"
 import { Register } from "./auth/Register"
 import { ArticleList } from "./article/ArticleList"
 import { ArticleForm } from "./article/ArticleForm"
+import { ArticleEditForm } from "./article/ArticleEditForm"
 import { Friends } from "./friends/Friends.js"
 import { FriendForm } from "./friends/FriendForm"
 
@@ -32,6 +33,7 @@ export const ApplicationViews = ({setAuthUser, isAuthenticated, setIsAuthenticat
       </Route>
       <Route path="/articles" element={<ArticleList />} />
       <Route path="/articles/add" element={<ArticleForm />} />
+      <Route path="/articles/:articleId/edit" element={<ArticleEditForm />} />
       <Route path="/login" element={<Login setAuthUser={setAuthUser}/> }/>
       <Route path="/register" element={<Register/>}/>
     </Routes>

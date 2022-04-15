@@ -1,5 +1,6 @@
 
 import React from "react"
+import { Link } from "react-router-dom";
 
 export const ArticleCard = ({ article, handleDeleteArticle }) => {
   
@@ -19,7 +20,9 @@ export const ArticleCard = ({ article, handleDeleteArticle }) => {
                 : ''
               }
             {currentUserId == article.userId
-                ? <button type="button" className="btn btn-primary" onClick={() => alert('no edit yet')(article.id)}>Edit</button>
+                ? <Link to={`/articles/${article.id}/edit`}>
+                    <button type="button" className="btn btn-primary">Edit</button>
+                  </Link>
                 : ''
               }
         </div>
@@ -27,19 +30,3 @@ export const ArticleCard = ({ article, handleDeleteArticle }) => {
     );
   }
 
-
-// export const ArticleCard = ( articl ) => {
-   
-//     return (
-//         <div className="card">
-//             <p className="article__title">{articl.title}</p>
-//             <div className="card__content">
-//                 <div>
-//                     <img className="article__url" src={articl.url} />
-//                 </div>
-//                 <p>{articl.synopsis}</p>
-//                 <p>{articl.timestamp}</p>
-//             </div>
-//         </div>
-//     )
-// }
