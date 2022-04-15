@@ -2,15 +2,26 @@
 import React from "react"
 
 export const ArticleCard = ({ article, handleDeleteArticle }) => {
-    return (
+  
+  let currentUserId = parseInt(sessionStorage.getItem("nutshell_user", JSON.stringify()))
+
+  return (
       <div className="card">
         <div className="card-content">
             <h3><span className="article-title">
             {article.title}
-          </span></h3>
-          <p>{article.synopsis}</p>
-          <a>{article.url}</a><br />
-          <button type="button" onClick={() => handleDeleteArticle(article.id)}>Delete</button>
+           </span></h3>
+              <p>{article.synopsis}</p>
+              <a href={article.url}>{article.url}</a><br />
+              <p>{(new Date(article.timestamp)).toLocaleString()}</p>
+            {currentUserId == article.userId
+                ? <button type="button" className="btn btn-primary" onClick={() => handleDeleteArticle(article.id)}>Delete</button>
+                : ''
+              }
+            {currentUserId == article.userId
+                ? <button type="button" className="btn btn-primary" onClick={() => alert('no edit yet')(article.id)}>Edit</button>
+                : ''
+              }
         </div>
       </div>
     );
