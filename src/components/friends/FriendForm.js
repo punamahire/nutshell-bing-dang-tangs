@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react"
 import { useNavigate } from "react-router-dom"
-import { addFriend } from "./FriendManager"
+import { addFriend, getAllUsers, getAllFriends, getUserById } from "./FriendManager"
 import "./FriendForm.css";
 
 
@@ -8,13 +8,17 @@ import "./FriendForm.css";
 
 export const FriendForm = () => {
 
+
+//-------------------------------------SAVE THE CURRENT USER'S ID AND OBJECT AS VARIABLES------------------------------------------------//	
+
   let currentUser = parseInt(sessionStorage.getItem("nutshell_user", JSON.stringify()))
+
 //----------------------------------------DEFINE navigate AS useNavigate FOR FUTURE USE--------------------------------------------------//
 
   const navigate = useNavigate()
 
 
-//----------------------------------------------SET FRIENDS ARRAY WITH EMPTY KEYS--------------------------------------------------------//
+//------------------------SET FRIENDS, USERS, CURRENT FRIENDS, AND CURRENT USER ARRAYS WITH EMPTY KEYS------------------------------------//
 
   const [friend, setFriend] = useState({
     name: "",
@@ -22,6 +26,50 @@ export const FriendForm = () => {
     userId: currentUser
   })
 
+	const [currentUserObj, setCurrentUserObj] = useState({})
+
+	const [users, setUsers] = useState({})
+
+	const [currentFriends, setCurrentFriends] = useState({})
+
+
+//-----------------------------------------POPULATE THE USERS ARRAY WITH USERS FROM THE API------------------------------------------------//
+
+	useEffect(() => {
+    getAllUsers()
+    .then(users => {
+      setUsers(users)});
+  }, []);
+
+
+//------------------------------------POPULATE THE CURRENT USER OBJ ARRAY WITH THE CURRENT USER---------------------------------------------//
+
+	useEffect(() => {
+    getUserById(currentUser)
+    .then(user => {
+			console.log(user)
+      setCurrentUserObj(user)});
+  }, []);
+
+//-----------------------------------------POPULATE THE CURRENT FRIENDS ARRAY WITH FRIENDS FROM THE API---------------------------------------//	
+
+	const filterFriends = (friends) => {
+		const filtered = friends.filter(friend => friend.userId === currentUser)
+		return(filtered)
+	}
+
+	const getFriends = () => {
+    //Pull Friends array from API...
+    return getAllFriends().then(allFriends => {
+      //...then populate empty friends array with what comes back.
+      const filtered = filterFriends(allFriends)
+      setCurrentFriends(filtered)
+    })
+  }
+
+	useEffect(() => {
+    getFriends()
+  }, []);
 
 //-----------------------------------------RE-RENDER AND DISPLAY VALUES WHEN A FIELD CHANGES-----------------------------------------------//
 
@@ -45,14 +93,41 @@ export const FriendForm = () => {
   const ClickAddFriend = (event) => {
 		//Prevents the browser from submitting the form
     event.preventDefault()
+		//Saves friend name and email in variables
+		const friendName = friend.name
+		const friendEmail = friend.email
+		//Checks the users array for the current entry and saves it as a variable
+		const isUser = (users.find(users => users.email === friendEmail))
+		const isFriend = (currentFriends.find(friend => friend.email === friendEmail))
+
     //Display error message if input fields are left empty
-		if (friend.name === "" || friend.email === "") {
-			window.alert("Please input a name and email address")
-		} else {
+		if (friendName === "" || friendEmail === "") {
+			window.alert("Please input a valid name and email address")
+
+		//Display error message if new friend is already on your friends list
+		}	else if (isFriend != undefined) {
+				if (friendName === isFriend.name && friendEmail === isFriend.email) { 
+					window.alert("This person is already your friend")
+				}
+				//...or if they do not exist
+				else {
+					window.alert("Please input a valid name and email address")
+				}
+
+		//Check to see if the added friend is yourself		
+		} else if (friendName === currentUserObj.name && friendEmail === currentUserObj.email) {
+			window.alert("You can't be friends with yourself, stoopid")
+
+		//Check to see if the added friend is a User 
+		} else if (friendName === isUser.name && friendEmail === isUser.email) {
 			//Invoke addFriend passing friend as an argument
 			//Navigate back to friends page
 			addFriend(friend)
 				.then(() => navigate("/friends"))
+
+		//Display error message if new friend does not exist
+			} else {
+			window.alert("Please input a valid name and email address")
 		}
 	}
 

@@ -11,6 +11,22 @@ export const getAllFriends = () => {
 }
 
 
+//-----------------------------------------RETRIEVES A LIST OF ALL USERS FROM THE API--------------------------------------------------//
+
+export const getAllUsers = () => {
+  return fetch (`${URL}/users`)
+    .then(response => response.json())
+}
+
+
+//------------------------------------------------RETRIEVES A USER BY THEIR ID----------------------------------------------------------//
+
+export const getUserById = (userId) => {
+  //be sure your animals have good data and related to a location and customer
+  return fetch(`${URL}/users/${userId}`)
+  .then(res => res.json())
+}
+
 //--------------------------------------ADDS AN OBJECT TO THE FRIENDS ARRAY THROUGH THE API-----------------------------------------------//
 
 export const addFriend = (newFriend) => {
@@ -31,3 +47,4 @@ export const deleteFriend = id => {
     method: "DELETE"
   }).then(result => result.json())
 }
+
