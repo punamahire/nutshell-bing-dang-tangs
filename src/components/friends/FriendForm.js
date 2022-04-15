@@ -80,13 +80,8 @@ export const FriendForm = () => {
 		const newFriend = { ...friend }
     //target the value of the input field
 		let selectedVal = event.target.value
-		console.log(selectedVal)
-		//convert the id value of the object in the input field to a string
-		// if (event.target.id.includes("Id")) {
-		// 	selectedVal = parseInt(selectedVal)}
 		//Change the property of the input field to a new value
 		newFriend[event.target.id] = selectedVal
-		console.log(newFriend)
 		// update state
 		setFriend(newFriend)
 	}
