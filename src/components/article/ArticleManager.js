@@ -26,9 +26,12 @@ export const addArticle = newArticle => {
     }).then(response => response.json())
 }
 
-// const remoteURL = "http://localhost:8088"
-
-// export const getAllArticles = () => {
-//     return fetch(`${remoteURL}/articles`)
-//     .then(result => result.json())
-// }
+export const updateArticle  = (editedArticle) => {
+	return fetch(`${remoteURL}/articles/${editedArticle.id}`, {
+		method: "PATCH",
+		headers: {
+			"Content-Type": "application/json"
+		},
+		body: JSON.stringify(editedArticle)
+	}).then(data => data.json());
+}
