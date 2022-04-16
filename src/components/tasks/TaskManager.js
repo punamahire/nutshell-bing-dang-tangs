@@ -10,6 +10,13 @@ export const getAllTasks = () => {
     .then(response => response.json())
 }
 
+//------------------------------------------------RETRIEVES A TASK BY IT'S ID----------------------------------------------------------//
+
+export const getTaskById = (taskId) => {
+  return fetch(`${URL}/tasks/${taskId}`)
+  .then(res => res.json())
+}
+
 
 //-----------------------------------------RETRIEVES A LIST OF ALL USERS FROM THE API--------------------------------------------------//
 
@@ -22,7 +29,6 @@ export const getAllUsers = () => {
 //------------------------------------------------RETRIEVES A USER BY THEIR ID----------------------------------------------------------//
 
 export const getUserById = (userId) => {
-  //be sure your animals have good data and related to a location and customer
   return fetch(`${URL}/users/${userId}`)
   .then(res => res.json())
 }
@@ -46,4 +52,17 @@ export const deleteTask = id => {
   return fetch(`${URL}/tasks/${id}`, {
     method: "DELETE"
   }).then(result => result.json())
+}
+
+
+//--------------------------------------------------------UPDATES A TASK----------------------------------------------------------------//
+
+export const updateTask  = (editedTask) => {
+	return fetch(`${URL}/tasks/${editedTask.id}`, {
+		method: "PATCH",
+		headers: {
+			"Content-Type": "application/json"
+		},
+		body: JSON.stringify(editedArticle)
+	}).then(data => data.json());
 }

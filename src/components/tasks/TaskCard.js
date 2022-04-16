@@ -1,21 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Checkbox } from "./Checkbox";
 
   
 
 export const TaskCard = ({task, callDeleteTask}) => {
   
-  const checkComplete = () => {
-    
-  }
   
   return (
     <div className="card">
       <div className="card-content">
         <div className="card-header">
-          <input
-            type="checkbox"
-          />
+          <Checkbox taskId={task.id}/>
           <h2>{task.name}</h2>
         </div>  
         <p>Complete By: <b>{task.date}</b></p>
