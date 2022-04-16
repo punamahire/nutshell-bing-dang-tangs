@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { getTaskById } from "./TaskManager";
 import { useEffect } from "react";
+import { updateTask } from "./TaskManager";
 
 
 export const Checkbox = (taskId) => {
@@ -13,6 +14,40 @@ export const Checkbox = (taskId) => {
       console.log (task)
       setTask(task)
     })
+  }
+
+  const setTaskComplete = () => {
+    evt.preventDefault()
+  
+    const editedTask = {
+      name: task.name,
+      date: task.date,
+      isComplete: true,
+      userId: task.userId,
+      id: task.id
+    };
+
+    
+    updateTask(task)
+        .then(() => navigate("/articles")
+        )
+  }
+
+  const setTaskIncomplete = () => {
+    evt.preventDefault()
+  
+    const editedTask = {
+      name: task.name,
+      date: task.date,
+      isComplete: false,
+      userId: task.userId,
+      id: task.id
+    };
+
+    
+    updateTask(task)
+        .then(() => navigate("/articles")
+        )
   }
 
   useEffect(() => {
