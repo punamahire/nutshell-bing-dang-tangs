@@ -53,16 +53,17 @@ export const Checkbox = (taskId) => {
   const [checkedState, setCheckedState] = useState(false)
 
   const handleChange = () => {
-  setCheckedState(!checkedState)
+    if (task.isComplete = true) {
+      console.log("True")
+      setCheckedState(!checkedState)
+    }
+    else {
+      console.log("False")
+      setCheckedState(!checkedState)
+    }
   
 } 
 
-  if (task.isComplete = true) {
-    console.log("True")
-  }
-  else {
-    console.log("False")
-  }
 
   return (
     <input type="checkbox" checked={checkedState} onChange={handleChange}/>
