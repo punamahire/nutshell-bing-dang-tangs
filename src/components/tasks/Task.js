@@ -13,8 +13,7 @@ export const Tasks = () => {
 
 //----------------------------------------PULLS THE CURRENT USER ID FROM SESSION STORAGE-------------------------------------------------//
 
-  let currentUser = parseInt(sessionStorage.getItem("nutshell_user", JSON.stringify()))
-
+  let currentUser = (sessionStorage.getItem("nutshell_user", JSON.stringify()))
 
 //----------------------------------------DEFINE navigate AS useNavigate FOR FUTURE USE--------------------------------------------------//  
 
@@ -67,7 +66,7 @@ const callDeleteTask = (id) => {
         <h1>Tasks</h1>
         <button type="button" className="btn btn-primary" onClick={() => {navigate("/tasks/add")}}>Add Task</button>
       </section>
-      <section className="card-container">
+      <section className="card-container-tasks">
         {tasks.map(task =>
           <TaskCard key={task.id} task={task} callDeleteTask={callDeleteTask}/>
         )}

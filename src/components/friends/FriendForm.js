@@ -12,6 +12,7 @@ export const FriendForm = () => {
 //-------------------------------------SAVE THE CURRENT USER'S ID AND OBJECT AS VARIABLES------------------------------------------------//	
 
   let currentUser = parseInt(sessionStorage.getItem("nutshell_user", JSON.stringify()))
+	console.log(currentUser)
 
 //----------------------------------------DEFINE navigate AS useNavigate FOR FUTURE USE--------------------------------------------------//
 
@@ -49,7 +50,6 @@ export const FriendForm = () => {
 	useEffect(() => {
     getUserById(currentUser)
     .then(user => {
-			console.log(user)
       setCurrentUserObj(user)});
   }, []);
 
