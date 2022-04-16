@@ -40,7 +40,6 @@ export const Friends = () => {
       //...then populate empty friends array with what comes back.
       const filtered = filterFriends(allFriends)
       setFriends(filtered)
-      console.log(filtered);
     })
   }
 
