@@ -63,6 +63,6 @@ export const updateTask  = (editedTask) => {
 		headers: {
 			"Content-Type": "application/json"
 		},
-		body: JSON.stringify(editedArticle)
+		body: JSON.stringify(editedTask)
 	}).then(data => data.json());
 }

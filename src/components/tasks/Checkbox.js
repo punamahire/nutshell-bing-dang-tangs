@@ -16,7 +16,7 @@ export const Checkbox = (taskId) => {
     })
   }
 
-  const setTaskComplete = () => {
+  const setTaskComplete = (evt) => {
     evt.preventDefault()
   
     const editedTask = {
@@ -29,11 +29,9 @@ export const Checkbox = (taskId) => {
 
     
     updateTask(task)
-        .then(() => navigate("/articles")
-        )
   }
 
-  const setTaskIncomplete = () => {
+  const setTaskIncomplete = (evt) => {
     evt.preventDefault()
   
     const editedTask = {
@@ -46,8 +44,6 @@ export const Checkbox = (taskId) => {
 
     
     updateTask(task)
-        .then(() => navigate("/articles")
-        )
   }
 
   useEffect(() => {
@@ -60,6 +56,13 @@ export const Checkbox = (taskId) => {
   setCheckedState(!checkedState)
   
 } 
+
+  if (task.isComplete = true) {
+    console.log("True")
+  }
+  else {
+    console.log("False")
+  }
 
   return (
     <input type="checkbox" checked={checkedState} onChange={handleChange}/>
