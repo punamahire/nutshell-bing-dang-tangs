@@ -116,7 +116,7 @@ export const FriendForm = () => {
 
 		//Check to see if the added friend is yourself		
 		} else if (friendName === currentUserObj.name && friendEmail === currentUserObj.email) {
-			window.alert("You can't be friends with yourself, stoopid")
+			window.alert("You can't be friends with yourself, dummy")
 
 		//Check to see if the added friend is a User 
 		} else if (friendName === isUser.name && friendEmail === isUser.email) {
