@@ -17,7 +17,9 @@ export const Messages = () => {
     // Delete message by id then reload the messages
     const handleDelete = (messageId) => {
         return DeleteMessage(messageId)
-            .then(getMessages)
+            .then(() => {
+                getMessages()
+            })
     }
 
     useEffect(() => {

@@ -36,7 +36,6 @@ export const NewMessage = ({getMessages, user}) => {
         })
         CreateMessage(messageObj)
             .then((res) => {
-                console.log(res);
                 getMessages()
                     .then(() => {
                         setIsLoading(false);
@@ -46,7 +45,7 @@ export const NewMessage = ({getMessages, user}) => {
 
     return (
         <>
-            <Container className="new-message-container">
+            <Container key="newMessage" className="new-message-container">
                 <Form onSubmit={handleSubmit}>
                     <h2>New Message</h2>
                     <Form.Group>

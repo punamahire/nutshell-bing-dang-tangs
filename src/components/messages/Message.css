@@ -1,7 +1,11 @@
-.col > .user-message {
-    background-color: #C8F2EF
+.red-column {
+    background-color: red;
 }
 
-.col > .message {
+.card.user {
+    background-color: #C8F2EF;
+}
+
+.card.other {
     background-color: #C3DBD9;
 }

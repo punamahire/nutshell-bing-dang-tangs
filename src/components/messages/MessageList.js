@@ -1,16 +1,18 @@
 import { Message } from "./Message";
-import { Container, Col } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import "./MessageList.css"
 
 export const MessageList = ({ handleDelete, user, messages }) => {
     return (
         <>
-            <Container>
-                <Col className="d-flex flex-column">
-                    {messages.map(element => {
-                        return <Message key={element.id} messageObj={element} user={user} handleDelete={handleDelete} />
-                    })}
-                </Col>
+            <Container key="messageList">
+                {messages.map(element => {
+                    return (
+                        <Row key={element.id} className={element.user.id === user.id ? `justify-content-end` : ``}>
+                            <Message messageObj={element} user={user} handleDelete={handleDelete} />
+                        </Row>
+                    )
+                })}
             </Container>
         </>
     )
