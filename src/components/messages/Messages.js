@@ -2,6 +2,7 @@ import { MessageList } from "./MessageList"
 import { NewMessage } from "./NewMessage"
 import { useState, useEffect } from "react"
 import { DeleteMessage, GetAllMessages } from "../../modules/MessageManager";
+import "./Messages.css"
 
 export const Messages = () => {
     let user = JSON.parse(sessionStorage.getItem("nutshell_user"));
@@ -28,8 +29,11 @@ export const Messages = () => {
 
     return (
         <>
-            <NewMessage user={user} getMessages={getMessages} />
-            <MessageList user={user} handleDelete={handleDelete} messages={messages}/>
+            <div className="messages-wrapper">
+                <NewMessage className="new-message-component" user={user} getMessages={getMessages} />
+                <br></br>
+                <MessageList user={user} handleDelete={handleDelete} messages={messages} />
+            </div>
         </>
     )
 }

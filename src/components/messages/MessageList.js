@@ -1,19 +1,20 @@
 import { Message } from "./Message";
 import { Container, Row } from "react-bootstrap";
-import "./MessageList.css"
+import { Fragment } from "react";
 
 export const MessageList = ({ handleDelete, user, messages }) => {
     return (
-        <>
-            <Container key="messageList">
-                {messages.map(element => {
-                    return (
-                        <Row key={element.id} className={element.user.id === user.id ? `justify-content-end` : ``}>
+        <Container>
+            {messages.map(element => {
+                return (
+                    <Fragment key={element.id}>
+                        <Row>
                             <Message messageObj={element} user={user} handleDelete={handleDelete} />
                         </Row>
-                    )
-                })}
-            </Container>
-        </>
+                        <br></br>
+                    </Fragment>
+                )
+            })}
+        </Container>
     )
 }

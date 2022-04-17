@@ -2,8 +2,14 @@
     background-color: red;
 }
 
+.card.message {
+    margin: 0;
+    padding: 1em;
+}
+
 .card.user {
     background-color: #C8F2EF;
+    
 }
 
 .card.other {

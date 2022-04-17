@@ -1,12 +1,12 @@
 import { useState } from "react"
 import { Button } from "react-bootstrap"
-import { Container } from "react-bootstrap"
+import { Container, Row, Col } from "react-bootstrap"
 import Form from "react-bootstrap/Form"
 import { CreateMessage } from "../../modules/MessageManager"
 import "./NewMessage.css"
 
-export const NewMessage = ({getMessages, user}) => {
-    
+export const NewMessage = ({ getMessages, user }) => {
+
     const [isLoading, setIsLoading] = useState(false);
 
     const [message, setMessage] = useState({
@@ -46,22 +46,26 @@ export const NewMessage = ({getMessages, user}) => {
     return (
         <>
             <Container key="newMessage" className="new-message-container">
-                <Form onSubmit={handleSubmit}>
-                    <h2>New Message</h2>
-                    <Form.Group>
-                        <Form.Label>Message</Form.Label>
-                        <Form.Control
-                            id="text"
-                            onChange={handleFieldChange}
-                            required
-                            as="textarea"
-                            value={message.text}
-                        ></Form.Control>
-                    </Form.Group>
-                    <br></br>
-                    <Button disabled={isLoading} variant="primary" type="submit">Submit</Button>{' '}
-                    <Button disabled={isLoading} variant="secondary">Cancel</Button>
-                </Form>
+                <Row>
+                    <Col xs={{span: 10, offset: 1}} md={{span: 8, offset: 2}} lg={{span: 6, offset: 3}} xxl={{span: 8, offset: 2}}>
+                        <Form onSubmit={handleSubmit}>
+                            <h2>New Message</h2>
+                            <Form.Group>
+                                <Form.Label>Message</Form.Label>
+                                <Form.Control
+                                    id="text"
+                                    onChange={handleFieldChange}
+                                    required
+                                    as="textarea"
+                                    value={message.text}
+                                ></Form.Control>
+                            </Form.Group>
+                            <br></br>
+                            <Button disabled={isLoading} variant="primary" type="submit">Submit</Button>{' '}
+                            <Button disabled={isLoading} variant="secondary">Cancel</Button>
+                        </Form>
+                    </Col>
+                </Row>
             </Container>
         </>
     )
