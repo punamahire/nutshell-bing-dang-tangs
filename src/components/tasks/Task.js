@@ -26,8 +26,11 @@ let currentUser = parseInt(sessionStorage.getItem("nutshell_user", JSON.stringif
 
 
   const filterTasks = (tasks) => {
-    const filtered = tasks.filter(task => task.userId === currentUser)
-    return(filtered)
+    const filteredByUser = tasks.filter(task => task.userId === currentUser)
+    console.log(filteredByUser)
+    const filteredByComplete = filteredByUser.filter(task => task.isComplete === false)
+    console.log(filteredByComplete)
+    return(filteredByComplete)
   }
 
   

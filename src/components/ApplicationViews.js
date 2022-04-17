@@ -12,6 +12,7 @@ import { EventAddForm } from "./event/EventAddForm"
 import { EventEditForm } from "./event/EventEditForm"
 import { Tasks } from "./tasks/Task.js"
 import { TaskForm } from "./tasks/TaskForm"
+import { TaskEditForm } from "./tasks/TaskEditForm"
 import "./event/EventAddEditForm.css"
 
 
@@ -37,6 +38,7 @@ export const ApplicationViews = ({setAuthUser, isAuthenticated, setIsAuthenticat
 
         <Route path="/tasks" element={<Tasks/>} />
         <Route path="/tasks/add" element={<TaskForm/>} />
+        <Route path="/tasks/:taskId/edit" element={<TaskEditForm/>} />
 
         <Route path="/events" element={<EventList/>} />
         <Route path="/events/create" element={<EventAddForm/>} />

@@ -31,3 +31,8 @@ main {
 .card-header input {
   margin-right: 1em;
 }
+
+.card-buttons button {
+  margin: .5em;
+  width: 5em;
+}
