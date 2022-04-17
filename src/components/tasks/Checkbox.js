@@ -11,14 +11,12 @@ export const Checkbox = (taskId) => {
   const getTask = () => {
     //Pull Tasks array from API...
     return getTaskById(taskId.taskId).then(task => {
-      console.log (task)
       setTask(task)
     })
   }
 
   const setTaskComplete = (evt) => {
-    evt.preventDefault()
-  
+    console.log("Setting Task as Complete")
     const editedTask = {
       name: task.name,
       date: task.date,
@@ -26,14 +24,15 @@ export const Checkbox = (taskId) => {
       userId: task.userId,
       id: task.id
     };
+    console.log(editedTask)
 
     
-    updateTask(task)
+    setTask(editedTask)
+    updateTask(editedTask)
   }
 
   const setTaskIncomplete = (evt) => {
-    evt.preventDefault()
-  
+    console.log("Setting Task as Incomplete")
     const editedTask = {
       name: task.name,
       date: task.date,
@@ -41,25 +40,40 @@ export const Checkbox = (taskId) => {
       userId: task.userId,
       id: task.id
     };
-
+    console.log(editedTask)
     
-    updateTask(task)
+    setTask(editedTask)
+    updateTask(editedTask)
   }
 
   useEffect(() => {
     getTask()
+    handleCurrentStatus()
   }, [])
   
   const [checkedState, setCheckedState] = useState(false)
 
+  const handleCurrentStatus = () => {
+    getTaskById(taskId.taskId).then(checkedTask => {
+      if (checkedTask.isComplete === false) {
+        setCheckedState(false)
+
+      } else if (checkedTask.isComplete === true) {
+      setCheckedState(true)
+    }
+  })
+}
+
   const handleChange = () => {
-    if (task.isComplete = true) {
-      console.log("True")
+    console.log(task.isComplete)    
+    
+    if (task.isComplete === false) {
       setCheckedState(!checkedState)
+      setTaskComplete()
     }
     else {
-      console.log("False")
       setCheckedState(!checkedState)
+      setTaskIncomplete()
     }
   
 } 
