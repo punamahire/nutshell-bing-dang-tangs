@@ -26,7 +26,7 @@ export const TaskEditForm = () => {
       id: taskId,
       name: task.name,
       date: task.date,
-	    isComplete: task.isComplete,
+	    isComplete: false,
 	    userId: task.userId
     };
 

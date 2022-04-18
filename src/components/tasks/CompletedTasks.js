@@ -8,7 +8,7 @@ import { TaskCard } from "./TaskCard";
 
 //----------------------------------------------BROUGHT TO YOU BY HOUSTON SMITH---------------------------------------------------------//
 
-export const Tasks = () => {
+export const CompletedTasks = () => {
 
 
 //----------------------------------------PULLS THE CURRENT USER ID FROM SESSION STORAGE-------------------------------------------------//
@@ -28,7 +28,7 @@ let currentUser = parseInt(sessionStorage.getItem("nutshell_user", JSON.stringif
   const filterTasks = (tasks) => {
     const filteredByUser = tasks.filter(task => task.userId === currentUser)
     console.log(filteredByUser)
-    const filteredByComplete = filteredByUser.filter(task => task.isComplete === false)
+    const filteredByComplete = filteredByUser.filter(task => task.isComplete === true)
     console.log(filteredByComplete)
     return(filteredByComplete)
   }
@@ -67,8 +67,7 @@ const callDeleteTask = (id) => {
     <main>
       <section className="task-header">
         <h1>Tasks</h1>
-        <button type="button" className="btn btn-primary" onClick={() => {navigate("/tasks/add")}}>Add Task</button>
-        <button type="button" className="btn btn-primary" onClick={() => {navigate("/tasks/completed")}}>Completed Tasks</button>
+        <button type="button" className="btn btn-primary" onClick={() => {navigate("/tasks")}}>Return</button>
       </section>
       <section className="card-container-tasks">
         {tasks.map(task =>

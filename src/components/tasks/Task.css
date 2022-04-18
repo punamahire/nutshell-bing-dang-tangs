@@ -36,3 +36,8 @@ main {
   margin: .5em;
   width: 5em;
 }
+
+.task-header button {
+  margin: .5em;
+  width: 10em;
+}
