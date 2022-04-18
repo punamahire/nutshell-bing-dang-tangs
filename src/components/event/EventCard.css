@@ -24,24 +24,25 @@ main {
     margin: 1em;
     width: 40%;
     padding: 1em;   
-  }
+}
 
-/* .card-buttons-div {
+.card-buttons-div {
     display: flex;  
 }
 
 .card-button {
+    margin-top: 1em;
     margin-right: 1em;
-} */
+}
 
 .container-cards > :first-child {
     font-weight: bolder;
-    flex: 0 0 84%;
+    flex: 0 0 65%;
 }
 
 .container-cards > :first-child div {
-    background-color: rgb(212, 240, 255);
-    padding: .25em;
+    background-color: #C8F2EF;
+    padding: .5em;
 }
 
 a {

@@ -1,5 +1,4 @@
 import React, { useReducer } from "react"
-import { Container, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Weather } from "./Weather";
 import "./EventCard.css"
@@ -18,9 +17,6 @@ export const EventCard = ({ singleEvent, handleDeleteEvent }) => {
     return (
       <div className="card">
         <div className="card-content">
-          {/* <picture>
-              <img className="card-img" src={`./images/puppy_${singleEvent.id}.png`} alt="My Dog" />
-          </picture> */}
           <h3><span className="card-eventname">
             {singleEvent.name}
           </span></h3>
@@ -29,12 +25,12 @@ export const EventCard = ({ singleEvent, handleDeleteEvent }) => {
           <div className="card-buttons-div">
             {isEventExpired() &&
               <Link to={`/events/${singleEvent.id}/edit`}>
-                  <Button className="card-button">Edit</Button> &nbsp;
+                  <button className="card-button btn btn-primary">Edit</button> &nbsp;
               </Link>
             } 
-            <Button type="button" className="card-button" onClick={() => handleDeleteEvent(singleEvent.id)}>Delete</Button> &nbsp;
+            <button type="button" className="card-button btn btn-primary" onClick={() => handleDeleteEvent(singleEvent.id)}>Delete</button> &nbsp;
             {isEventExpired() &&
-                <Button type="button" className="card-button" onClick={() => toggleValue()}>Show Weather</Button>
+                <button type="button" className="card-button btn btn-primary" onClick={() => toggleValue()}>Show Weather</button>
             }
             {
                   value && <Weather location={singleEvent.location} date={singleEvent.date} /> 

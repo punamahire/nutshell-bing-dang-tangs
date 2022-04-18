@@ -36,7 +36,7 @@ export const EventList = () => {
         getFriendsOfActiveUser(activeUserId).then(friends => {
 
           // userIds[] will have ids of active user and its friends' ids
-          const userIds = [activeUserId, friends.map(f => f.friendId)].flat()
+          const userIds = [activeUserId, friends.map(f => f.theirId)].flat()
 
           upcomingEvents.map(evt => {
           
@@ -78,10 +78,10 @@ export const EventList = () => {
    <main>
     <section className="section-content">
         <h1>Event List</h1>
-        <Button type="button"
+        <button type="button" className="btn btn-primary"
             onClick={() => {navigate("/events/create")}}>
             Add Event
-        </Button>
+        </button>
     </section>
     <div className="container-cards">
       {events.map(event => 

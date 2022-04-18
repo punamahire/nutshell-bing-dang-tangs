@@ -26,8 +26,6 @@ export const Friends = () => {
 
 
   const filterFriends = (friends) => {
-    console.log('in filter', currentUser);
-    console.log(friends);
     const filtered = friends.filter(friend => friend.userId === currentUser)
     return (filtered)
   }
