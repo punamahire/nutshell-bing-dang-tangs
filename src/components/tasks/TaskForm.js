@@ -12,7 +12,8 @@ export const TaskForm = () => {
 
 //-------------------------------------SAVE THE CURRENT USER'S ID AND OBJECT AS VARIABLES------------------------------------------------//	
 
-  let currentUser = parseInt(sessionStorage.getItem("nutshell_user", JSON.stringify()))
+let tmp = JSON.parse(sessionStorage.getItem("nutshell_user"));
+let currentUser = tmp.id;
 
 //----------------------------------------DEFINE navigate AS useNavigate FOR FUTURE USE--------------------------------------------------//
 

@@ -21,12 +21,12 @@ export const FriendForm = () => {
 
 	//------------------------SET FRIENDS, USERS, CURRENT FRIENDS, AND CURRENT USER ARRAYS WITH EMPTY KEYS------------------------------------//
 
-  const [friend, setFriend] = useState({
-    name: "",
-    email: "",
-	theirId: "",
-    userId: currentUser
-  })
+	const [friend, setFriend] = useState({
+		name: "",
+		email: "",
+		theirId: "",
+		userId: currentUser,
+	})
 
 	const [currentUserObj, setCurrentUserObj] = useState({})
 
@@ -123,7 +123,7 @@ export const FriendForm = () => {
 		} else if (friendName === isUser.name && friendEmail === isUser.email) {
 			//Invoke addFriend passing friend as an argument
 			//Navigate back to friends page
-			newFriend.theirId = isUser.id;
+			newFriend.theirId = isUser.id
 			addFriend(newFriend)
 				.then(() => navigate("/friends"))
 

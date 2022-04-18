@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 
 export const ArticleCard = ({ article, handleDeleteArticle }) => {
   
-  let currentUserId = parseInt(sessionStorage.getItem("nutshell_user", JSON.stringify()))
-
+  let tmp = JSON.parse(sessionStorage.getItem("nutshell_user"));
+  let currentUserId = tmp.id;
+  
   return (
       <div className="card">
         <div className="card-content">
