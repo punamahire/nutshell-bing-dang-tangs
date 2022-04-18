@@ -24,6 +24,7 @@ export const FriendForm = () => {
 	const [friend, setFriend] = useState({
 		name: "",
 		email: "",
+		theirId: "",
 		userId: currentUser,
 	})
 
@@ -122,7 +123,7 @@ export const FriendForm = () => {
 		} else if (friendName === isUser.name && friendEmail === isUser.email) {
 			//Invoke addFriend passing friend as an argument
 			//Navigate back to friends page
-			friend.friendId = isUser.id
+			newFriend.theirId = isUser.id
 			addFriend(newFriend)
 				.then(() => navigate("/friends"))
 
