@@ -13,7 +13,8 @@ export const Tasks = () => {
 
 //----------------------------------------PULLS THE CURRENT USER ID FROM SESSION STORAGE-------------------------------------------------//
 
-let currentUser = parseInt(sessionStorage.getItem("nutshell_user"))
+let tmp = JSON.parse(sessionStorage.getItem("nutshell_user"));
+let currentUser = tmp.id;
 
 
 //----------------------------------------DEFINE navigate AS useNavigate FOR FUTURE USE--------------------------------------------------//  

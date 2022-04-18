@@ -1,0 +1,8 @@
+.messages-wrapper {
+    padding: 0 0.5em;
+}
+
+.new-messages-component {
+    position: sticky;
+    top: 0;
+}

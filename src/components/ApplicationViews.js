@@ -2,6 +2,7 @@ import React from "react"
 import { Routes, Route, Outlet, Navigate } from "react-router-dom"
 import { Login } from "./auth/Login"
 import { Register } from "./auth/Register"
+import { Messages } from "./messages/Messages"
 import { ArticleList } from "./article/ArticleList"
 import { ArticleForm } from "./article/ArticleForm"
 import { ArticleEditForm } from "./article/ArticleEditForm"
@@ -31,6 +32,7 @@ export const ApplicationViews = ({setAuthUser, isAuthenticated, setIsAuthenticat
     <>
     <Routes>
       <Route path="/" element={<PrivateOutlet/>} >
+        <Route path="/messages" element={<Messages />} />
 
         <Route path="/friends" element={<Friends/>} />
         <Route path="/friends/add" element={<FriendForm/>} />
