@@ -5,7 +5,8 @@ import "./ArticleForm.css";
 
 export const ArticleForm = () => {
 
-    let currentUserId = parseInt(sessionStorage.getItem("nutshell_user", JSON.stringify()))
+  let tmp = JSON.parse(sessionStorage.getItem("nutshell_user"));
+  let currentUserId = tmp.id;
     
       const navigate = useNavigate()
     
