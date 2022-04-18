@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {useNavigate, useParams} from "react-router-dom";
 import { getEventById, updateEvent } from "../../modules/EventManager";
-import { Container, Form, Button } from "react-bootstrap"
 import "./EventAddEditForm.css"
-
 
 export const EventEditForm = () => {
   const [event, setEvent] = useState({});
@@ -24,8 +22,6 @@ export const EventEditForm = () => {
 
     // get the userId from the current session 
     const tempUser = JSON.parse(sessionStorage.getItem("nutshell_user"))
-
-    console.log("object from session and userId:", tempUser, tempUser.id)
 
     const editedEvent = {
       id: eventId,
@@ -51,10 +47,12 @@ export const EventEditForm = () => {
 
   return (
     <>
-    <Container>
-      <Form>
+      <form className="eventForm">
+        <h2>Edit Event</h2>
         <fieldset>
           <div className="formgrid">
+          <div className="form-group">
+            <label htmlFor="name">Event name</label>
             <input
               type="text"
               required
@@ -62,9 +60,11 @@ export const EventEditForm = () => {
               onChange={handleFieldChange}
               id="name"
               value={event.name}
-            />
-            <label htmlFor="name">Event name</label>
+            />     
+          </div>       
 
+          <div className="form-group">
+            <label htmlFor="date">Date</label>
             <input
               type="datetime-local"
               required
@@ -73,8 +73,10 @@ export const EventEditForm = () => {
               id="date"
               value={event.date}
             />
-            <label htmlFor="date">Date</label>
-
+          </div>
+            
+          <div className="form-group">
+            <label htmlFor="location">Location</label>
             <input
               type="text"
               required
@@ -83,19 +85,26 @@ export const EventEditForm = () => {
               id="location"
               value={event.location}
             />
-            <label htmlFor="location">Location</label>
+          </div>
+            
           </div>
           {/* Be sure to include the userId. Get it from session */}
-          <div className="alignRight">
-            <Button
+          <div className="eventEditFormButtons">
+            <button
               type="button" disabled={isLoading}
               onClick={updateExistingEvent}
               className="btn btn-primary"
-            >Submit</Button>
+            >Submit</button> 
+            <button 
+              type="button"
+              className="btn btn-primary"
+              onClick={() => {navigate("/events")}}>
+              Cancel
+            </button>
           </div>
+
         </fieldset>
-      </Form>
-      </Container>
+      </form>
     </>
   );
 }
