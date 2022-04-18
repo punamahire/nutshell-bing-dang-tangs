@@ -28,7 +28,6 @@ export const ApplicationViews = ({setAuthUser, isAuthenticated, setIsAuthenticat
     <>
     <Routes>
       <Route path="/" element={<PrivateOutlet/>} >
-        <Route path="/friends" element={""} />
         <Route path="/messages" element={<Messages />} />
 
         <Route path="/friends" element={<Friends/>} />
