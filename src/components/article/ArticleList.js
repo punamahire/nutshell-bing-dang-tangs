@@ -4,6 +4,7 @@ import { ArticleCard } from './ArticleCard';
 import { getAllArticles, getArticleById, deleteArticle, addArticle, getAllFriends } from './ArticleManager';
 import { useNavigate } from 'react-router-dom';
 import "./ArticleList.css"
+import { getFriendsOfActiveUser } from '../friends/FriendManager';
 
 export const ArticleList = () => {
 
@@ -24,6 +25,7 @@ export const ArticleList = () => {
             const filteredArticles = filterArticles(articlesFromAPI)
             setArticles(filteredArticles)
         });
+        
     };
 
     const filterArticles = (articles) => {
@@ -39,18 +41,11 @@ export const ArticleList = () => {
 //----------------------------------------RETRIEVES FRIENDS FROM API AND FILTERS THEM BY USER---------------------------------------//    
 
     const getFriends = () => {
-      getAllFriends().then(friendsFromApi => {
-
-        const filteredFriends = filterFriends(friendsFromApi)
-        setFriends(filteredFriends)
-      
+      getFriendsOfActiveUser(currentUser).then(friendsFromApi => {
+        console.log(friendsFromApi)
+        setFriends(friendsFromApi)
       })
 
-    }
-
-    const filterFriends = (friends) => {
-      const filteredByUser = friends.filter(article => article.userId === currentUser)
-      return(filteredByUser)
     }
     
     useEffect(() => {
@@ -65,26 +60,25 @@ const getFriendsArticles = () => {
   getAllArticles().then(articlesFromAPI => {
     
     const articlesArray = []
-    
-    for (let i = 0; i < friends.length; i++) {
-      const filteredArticles = filterArticlesByFriend(articlesFromAPI, friends[i])
-      if (filteredArticles.length > 0) {
-        console.log(filteredArticles)
-        articlesArray.push(filteredArticles)
+    const userIds = friends.map(f => f.theirId)
+    console.log(userIds)
+    articlesFromAPI.map(article => {
+      // if the event is posted by the active user or a friend 
+      // of the active user then add the event to the array
+      if (userIds.includes(article.userId)) {
+        articlesArray.push(article)
       }
-      else {}   
-    }
+  
+    });
 
     console.log(articlesArray)
     setFriendsArticles(articlesArray)
-
   });
 };
 
-const filterArticlesByFriend = (articles, friend) => {
-  const filteredByUser = articles.filter(article => article.userId === friend.theirId)
-  return(filteredByUser)
-}
+useEffect(() => {
+  getFriendsArticles()
+}, []);
 
 
 //----------------------------------------------------------------------------------------------------------------------------------//
@@ -110,13 +104,12 @@ const filterArticlesByFriend = (articles, friend) => {
           article={article}
           handleDeleteArticle={handleDeleteArticle} />)}
     </div>
-    <button type='button' className="btn btn-primary" onClick={() => {getFriendsArticles()}}>See Friends Articles</button>
     <div className="card-container">
-      {/* {friendsArticles.map(article =>
+      {friendsArticles.map(article =>
         <ArticleCard
           key={article.id}
           article={article}
-          handleDeleteArticle={handleDeleteArticle} />)} */}
+          handleDeleteArticle={handleDeleteArticle} />)}
     </div>
     </main>
   );
