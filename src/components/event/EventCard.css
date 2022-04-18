@@ -1,14 +1,47 @@
 
+main {
+    display: flex;
+    flex-direction: column;
+    margin-left: 2em;
+    margin-top: 1em;
+}
+
+.section-content button{
+    margin-top: .5em;
+}
+
+.container-cards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 2em;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    -ms-flex-align: start;
+    margin: 1em;
+    width: 40%;
+    padding: 1em;   
+  }
+
+/* .card-buttons-div {
+    display: flex;  
+}
+
+.card-button {
+    margin-right: 1em;
+} */
+
 .container-cards > :first-child {
     font-weight: bolder;
+    flex: 0 0 84%;
 }
 
 .container-cards > :first-child div {
-    background-color: beige;
-}
-
-.container-cards > :first-child .card {
-    width: 45em;
+    background-color: rgb(212, 240, 255);
+    padding: .25em;
 }
 
 a {

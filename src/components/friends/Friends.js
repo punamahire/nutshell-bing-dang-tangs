@@ -11,7 +11,7 @@ export const Friends = () => {
 
 //----------------------------------------PULLS THE CURRENT USER ID FROM SESSION STORAGE-------------------------------------------------//
 
-  let currentUser = parseInt(sessionStorage.getItem("nutshell_user", JSON.stringify()))
+  let currentUser = JSON.parse(sessionStorage.getItem("nutshell_user")).id
 
 
 //----------------------------------------DEFINE navigate AS useNavigate FOR FUTURE USE--------------------------------------------------//  
@@ -25,6 +25,8 @@ export const Friends = () => {
 
 
   const filterFriends = (friends) => {
+    console.log('in filter', currentUser);
+    console.log(friends);
     const filtered = friends.filter(friend => friend.userId === currentUser)
     return(filtered)
   }

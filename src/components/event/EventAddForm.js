@@ -34,10 +34,6 @@ export const EventAddForm = () => {
         const userObj = JSON.parse(sessionStorage.getItem("nutshell_user"))
 		eventObj.userId = userObj.id;
 
-        // save the date and time in the date object
-        // let eventDate = eventObj.date.split('T')[0]
-        // let eventTime = eventObj.date.split('T')[1]
-
 		if (eventObj.name === "" || eventObj.date === "" || eventObj.location === "") {
 			window.alert("Please enter name, date and location")
 		} else {

@@ -11,7 +11,8 @@ export const FriendForm = () => {
 
 //-------------------------------------SAVE THE CURRENT USER'S ID AND OBJECT AS VARIABLES------------------------------------------------//	
 
-  let currentUser = parseInt(sessionStorage.getItem("nutshell_user", JSON.stringify()))
+  let currentUser = JSON.parse(sessionStorage.getItem("nutshell_user")).id
+	console.log("currentUser", currentUser)
 
 //----------------------------------------DEFINE navigate AS useNavigate FOR FUTURE USE--------------------------------------------------//
 
@@ -23,6 +24,7 @@ export const FriendForm = () => {
   const [friend, setFriend] = useState({
     name: "",
     email: "",
+	friendId: 0,
     userId: currentUser
   })
 
@@ -119,9 +121,11 @@ export const FriendForm = () => {
 			window.alert("You can't be friends with yourself, stoopid")
 
 		//Check to see if the added friend is a User 
-		} else if (friendName === isUser.name && friendEmail === isUser.email) {
+		} else if (isUser && (friendName === isUser.name && friendEmail === isUser.email)) {
 			//Invoke addFriend passing friend as an argument
 			//Navigate back to friends page
+			friend.friendId = isUser.id;
+			console.log('asasaa', friend);
 			addFriend(friend)
 				.then(() => navigate("/friends"))
 
