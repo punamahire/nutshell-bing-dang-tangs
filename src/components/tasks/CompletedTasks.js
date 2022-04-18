@@ -66,7 +66,7 @@ const callDeleteTask = (id) => {
   return (
     <main>
       <section className="task-header">
-        <h1>Tasks</h1>
+        <h1>Completed Tasks</h1>
         <button type="button" className="btn btn-primary" onClick={() => {navigate("/tasks")}}>Return</button>
       </section>
       <section className="card-container-tasks">
