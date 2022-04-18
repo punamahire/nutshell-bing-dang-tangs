@@ -80,11 +80,13 @@ export const FriendForm = () => {
 		const newFriend = { ...friend }
     //target the value of the input field
 		let selectedVal = event.target.value
+		console.log(selectedVal)
 		//convert the id value of the object in the input field to a string
-		if (event.target.id.includes("Id")) {
-			selectedVal = parseInt(selectedVal)}
+		// if (event.target.id.includes("Id")) {
+		// 	selectedVal = parseInt(selectedVal)}
 		//Change the property of the input field to a new value
 		newFriend[event.target.id] = selectedVal
+		console.log(newFriend)
 		// update state
 		setFriend(newFriend)
 	}
@@ -98,6 +100,7 @@ export const FriendForm = () => {
 		//Saves friend name and email in variables
 		const friendName = friend.name
 		const friendEmail = friend.email
+		let newFriend = { ...friend }
 		//Checks the users array for the current entry and saves it as a variable
 		const isUser = (users.find(users => users.email === friendEmail))
 		const isFriend = (currentFriends.find(friend => friend.email === friendEmail))
