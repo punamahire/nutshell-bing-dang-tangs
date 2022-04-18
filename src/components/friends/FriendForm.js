@@ -82,9 +82,6 @@ export const FriendForm = () => {
 		const newFriend = { ...friend }
 		//target the value of the input field
 		let selectedVal = event.target.value
-		//convert the id value of the object in the input field to a string
-		// if (event.target.id.includes("Id")) {
-		// 	selectedVal = parseInt(selectedVal)}
 		//Change the property of the input field to a new value
 		newFriend[event.target.id] = selectedVal
 		// update state
@@ -121,7 +118,7 @@ export const FriendForm = () => {
 
 			//Check to see if the added friend is yourself		
 		} else if (friendName === currentUserObj.name && friendEmail === currentUserObj.email) {
-			window.alert("You can't be friends with yourself, stoopid")
+			window.alert("You can't be friends with yourself, dummy")
 
 			//Check to see if the added friend is a User 
 		} else if (friendName === isUser.name && friendEmail === isUser.email) {
