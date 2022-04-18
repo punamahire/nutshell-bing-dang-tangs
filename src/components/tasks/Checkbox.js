@@ -40,7 +40,6 @@ export const Checkbox = (taskId) => {
       userId: task.userId,
       id: task.id
     };
-    console.log(editedTask)
     
     setTask(editedTask)
     updateTask(editedTask)
@@ -55,17 +54,11 @@ export const Checkbox = (taskId) => {
 
   const handleCurrentStatus = () => {
     getTaskById(taskId.taskId).then(checkedTask => {
-      if (checkedTask.isComplete === false) {
-        setCheckedState(false)
-
-      } else if (checkedTask.isComplete === true) {
-      setCheckedState(true)
-    }
+      setCheckedState(checkedTask.isComplete)
   })
 }
 
   const handleChange = () => {
-    console.log(task.isComplete)    
     
     if (task.isComplete === false) {
       setCheckedState(!checkedState)

@@ -46,7 +46,7 @@ export const addTask = (newFriend) => {
 }
 
 
-//--------------------------------------TARGETS AN OBJECT IN THE TASK ARRAY AND DELETES IT----------------------------------------------//
+//--------------------------------------TARGETS AN OBJECT IN THE TASK ARRAY AND DELETES IT-----------------------------------------------//
 
 export const deleteTask = id => {
   return fetch(`${URL}/tasks/${id}`, {

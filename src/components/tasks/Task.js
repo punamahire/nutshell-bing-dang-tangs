@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Task.css";
-import { getAllTasks, deleteTask } from "./TaskManager";
+import { getAllTasks, deleteTask, getUserById } from "./TaskManager";
 import { TaskCard } from "./TaskCard";
 
 
@@ -13,7 +13,8 @@ export const Tasks = () => {
 
 //----------------------------------------PULLS THE CURRENT USER ID FROM SESSION STORAGE-------------------------------------------------//
 
-let currentUser = parseInt(sessionStorage.getItem("nutshell_user", JSON.stringify()))
+let currentUser = parseInt(sessionStorage.getItem("nutshell_user"))
+
 
 //----------------------------------------DEFINE navigate AS useNavigate FOR FUTURE USE--------------------------------------------------//  
 
