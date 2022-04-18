@@ -11,6 +11,10 @@ import { FriendForm } from "./friends/FriendForm"
 import { EventList } from "./event/EventList"
 import { EventAddForm } from "./event/EventAddForm"
 import { EventEditForm } from "./event/EventEditForm"
+import { Tasks } from "./tasks/Task.js"
+import { TaskForm } from "./tasks/TaskForm"
+import { TaskEditForm } from "./tasks/TaskEditForm"
+import { CompletedTasks } from "./tasks/CompletedTasks"
 import "./event/EventAddEditForm.css"
 
 
@@ -28,13 +32,18 @@ export const ApplicationViews = ({setAuthUser, isAuthenticated, setIsAuthenticat
     <>
     <Routes>
       <Route path="/" element={<PrivateOutlet/>} >
-        <Route path="/friends" element={""} />
         <Route path="/messages" element={<Messages />} />
 
         <Route path="/friends" element={<Friends/>} />
         <Route path="/friends/add" element={<FriendForm/>} />
 
-        <Route path="/tasks" element={""} />
+        <Route path="/messages" element={""} />
+
+        <Route path="/tasks" element={<Tasks/>} />
+        <Route path="/tasks/completed" element={<CompletedTasks/>} />
+        <Route path="/tasks/add" element={<TaskForm/>} />
+        <Route path="/tasks/:taskId/edit" element={<TaskEditForm/>} />
+
         <Route path="/events" element={<EventList/>} />
         <Route path="/events/create" element={<EventAddForm/>} />
         <Route path="/events/:eventId/edit" element={<EventEditForm/>} />
