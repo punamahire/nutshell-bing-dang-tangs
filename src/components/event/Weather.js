@@ -32,27 +32,27 @@ export const Weather = ({ location, date }) => {
         <> 
           { weatherInfo && 
             (<div className="weather-card">
-                <div className="card-content">
+                <div className="weather-content">
                     {/* <picture>
                         <img className="card-img" src={`./images/puppy_${singleEvent.id}.png`} alt="My Dog" />
                     </picture> */
                     }
                     <hr></hr>
                     <h3> 
-                        <span className="card-petname">
+                        <span className="card-location">
                             {weatherInfo.location?.name}, {weatherInfo.location?.region}
                         </span>
                     </h3>
-                    <p>Temperature: {weatherInfo.current?.temp_f}</p>
+                    <p>Temperature: {Math.round(weatherInfo.current?.temp_f) +'\xB0F' }</p>
+                    <p>Feels Like: {Math.round(weatherInfo.current?.feelslike_f) +'\xB0F'}</p>
                     <p>Condition: {weatherInfo.current?.condition.text}</p>
-                    <p>Feels Like: {weatherInfo.current?.feelslike_f}</p>
                     { (new Date(date) > fourteenDaysAhead) && 
                         <div>
                             <p>Weather forecast for the date of the event cannot be determined.</p> 
                             <p>Event is too far in the future.</p>
+                            <p>Showing today's weather.</p>
                         </div>
-                    }
-                
+                    }                
                 </div>
             </div>)
           } 
