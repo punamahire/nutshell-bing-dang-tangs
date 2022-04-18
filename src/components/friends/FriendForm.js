@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
-import { addFriend, getAllUsers, getAllFriends, getUserById } from "./FriendManager"
+import { addFriend, getAllUsers, getAllFriends, getUserById } from "../../modules/FriendManager"
 import "./FriendForm.css";
 
 

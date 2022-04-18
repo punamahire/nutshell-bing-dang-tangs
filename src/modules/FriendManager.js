@@ -48,3 +48,10 @@ export const deleteFriend = id => {
   }).then(result => result.json())
 }
 
+
+// Function to get all friends for a provided userId
+
+export const getAllFriendsForUserId = (userId) => {
+  return fetch (`${URL}/friends?userId=${userId}`)
+    .then(response => response.json())
+}
