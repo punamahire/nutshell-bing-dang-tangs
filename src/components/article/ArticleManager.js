@@ -35,3 +35,10 @@ export const updateArticle  = (editedArticle) => {
 		body: JSON.stringify(editedArticle)
 	}).then(data => data.json());
 }
+
+export const getAllFriends = () => {
+  return fetch (`${remoteURL}/friends`)
+    .then(response => response.json())
+}
+
+
