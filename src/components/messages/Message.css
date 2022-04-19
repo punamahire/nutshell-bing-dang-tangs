@@ -19,3 +19,11 @@
 .card.private {
     background-color: lightgray;
 }
+
+.msgTitle {
+    cursor: pointer;
+}
+
+.msgTitle:hover {
+    text-decoration: underline;
+}
