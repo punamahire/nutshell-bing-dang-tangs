@@ -10,6 +10,12 @@ export const getAllFriends = () => {
     .then(response => response.json())
 }
 
+//-----------------------------------------RETRIEVES A LIST OF FRIENDS OF THE ACTIVE USER FROM THE API--------------------------------------------------//
+
+export const getFriendsOfActiveUser = (userId) => {
+  return fetch (`${URL}/friends?userId=${userId}`)
+    .then(response => response.json())
+}
 
 //-----------------------------------------RETRIEVES A LIST OF ALL USERS FROM THE API--------------------------------------------------//
 
