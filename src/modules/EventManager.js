@@ -13,6 +13,7 @@ export const getEventById = (eventId) => {
 }
 
 export const deleteEvent = id => {
+    console.log("inside deleteEvent", id)
     return fetch(`${remoteURL}/events/${id}`, {
       method: "DELETE"
     }).then(result => result.json())
