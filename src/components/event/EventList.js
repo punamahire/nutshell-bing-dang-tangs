@@ -11,6 +11,7 @@ export const EventList = () => {
   const [events, setEvents] = useState([]);
   const [friendsEventIds, setFriendsEventIds] = useState([])
   const navigate = useNavigate();
+  let friendUserIds = []
 
   const getEvents = () => {
     
