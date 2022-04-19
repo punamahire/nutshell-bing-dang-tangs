@@ -30,7 +30,7 @@ export const Messages = () => {
     return (
         <>
             <div className="messages-wrapper">
-                <NewMessage className="new-message-component" user={user} getMessages={getMessages} />
+                <NewMessage user={user} getMessages={getMessages} />
                 <br></br>
                 <MessageList user={user} handleDelete={handleDelete} messages={messages} />
             </div>

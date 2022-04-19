@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Friends.css";
 import { FriendCard } from "./FriendCard";
-import { getAllFriends, deleteFriend } from "./FriendManager";
+import { getAllFriends, deleteFriend } from "../../modules/FriendManager";
 
 //----------------------------------------------BROUGHT TO YOU BY HOUSTON SMITH---------------------------------------------------------//
 
