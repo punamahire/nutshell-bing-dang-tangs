@@ -24,7 +24,7 @@ main {
     padding: 1em;
   }
 
-  .card-content button {
+  .article-card-content button {
     margin-right: .5em;
     width: 5em;
   }

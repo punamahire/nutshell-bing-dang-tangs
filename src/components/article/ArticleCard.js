@@ -9,7 +9,7 @@ export const ArticleCard = ({ article, handleDeleteArticle }) => {
   
   return (
       <div className="card">
-        <div className="card-content">
+        <div className="article-card-content">
 
             {currentUserId === article.userId
             ? <h3><span className="article-title">
