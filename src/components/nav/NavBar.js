@@ -5,7 +5,11 @@ import "bootstrap/dist/css/bootstrap.min.css"
 
 export const NavBar = (props) => {
   let tmp = JSON.parse(sessionStorage.getItem("nutshell_user"));
-    let currentUserName = tmp.name;
+  let currentUserName = null
+  if (tmp) {
+    currentUserName = tmp.name;
+  }
+    
   return (
     <nav className="navbar bg-dark text-white flex-md-nowrap p-0 shadow">
 
@@ -33,8 +37,14 @@ export const NavBar = (props) => {
         </li>}
         </ul>
         <div>
-          <p>Hello, {currentUserName}</p>
+          {currentUserName
+            ? <p>Hello, {currentUserName}</p>
+            : ''
+          }
+          
         </div>
     </nav>
   )
 }
+
+

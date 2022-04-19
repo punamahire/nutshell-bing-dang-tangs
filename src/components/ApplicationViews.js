@@ -33,6 +33,11 @@ export const ApplicationViews = ({setAuthUser, isAuthenticated, setIsAuthenticat
     <>
     <Routes>
       <Route path="/" element={<PrivateOutlet/>} >
+        
+      <Route path="/articles" element={<ArticleList />} />
+      <Route path="/articles/add" element={<ArticleForm />} />
+      <Route path="/articles/:articleId/edit" element={<ArticleEditForm />} />
+
         <Route path="/messages" element={<Messages />} />
 
         <Route path="/friends" element={<Friends/>} />
@@ -47,9 +52,6 @@ export const ApplicationViews = ({setAuthUser, isAuthenticated, setIsAuthenticat
         <Route path="/events/create" element={<EventAddForm/>} />
         <Route path="/events/:eventId/edit" element={<EventEditForm/>} />
       </Route>
-      <Route path="/articles" element={<ArticleList />} />
-      <Route path="/articles/add" element={<ArticleForm />} />
-      <Route path="/articles/:articleId/edit" element={<ArticleEditForm />} />
       <Route path="/login" element={<Login setAuthUser={setAuthUser}/> }/>
       <Route path="/register" element={<Register/>}/>
       <Route path="/dashboard" element={<Dashboard/>}/>
