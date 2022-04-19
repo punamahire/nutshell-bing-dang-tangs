@@ -8,7 +8,7 @@ main {
     margin-top: 1em;
   }
   
-  .card-container {
+  .container-cards {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -28,5 +28,33 @@ main {
     margin-right: .5em;
     width: 5em;
   }
+
+  .styleFriendEventCardArticle {
+    display: flex;
+    flex-direction: column;
+    -ms-flex-align: start;
+    margin: 1em;
+    width: 40%;
+    padding: 1em;
+    background-color: cornsilk;
+    border: 2px yellow solid;   
+}
+
+.styleYourEventCardArticle {
+    display: flex;
+    flex-direction: column;
+    -ms-flex-align: start;
+    margin: 1em;
+    width: 40%;
+    padding: 1em;
+    border: 2px lightgray solid;   
+}
+
+.container-cards > :first-child {
+    font-weight: bolder;
+    flex: 0 0 65%;
+    background-color: #C8F2EF;
+    border: 2px lightblue solid;   
+}
 
   

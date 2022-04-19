@@ -66,7 +66,7 @@ export const ArticleList = () => {
     <h1>Articles</h1>
     <button type='button' className="btn btn-primary" onClick={() => {navigate("/articles/add")}}>Add new article</button>
     </section>
-    <div className="card-container">
+    <div className="container-cards">
       {articles.map(article =>
         <ArticleCard
           key={article.id}
