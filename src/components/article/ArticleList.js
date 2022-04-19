@@ -42,7 +42,6 @@ export const ArticleList = () => {
 
     const getFriends = () => {
       getFriendsOfActiveUser(currentUser).then(friendsFromApi => {
-        console.log(friendsFromApi)
         setFriends(friendsFromApi)
       })
 
@@ -56,7 +55,9 @@ export const ArticleList = () => {
 //----------------------------------------RETRIEVES FRIENDS ARTICLES FROM THE API--------------------------------------------------//
     
 const getFriendsArticles = () => {
-       
+  
+  
+
   getAllArticles().then(articlesFromAPI => {
     
     const articlesArray = []
@@ -70,7 +71,6 @@ const getFriendsArticles = () => {
       }
   
     });
-
     console.log(articlesArray)
     setFriendsArticles(articlesArray)
   });
