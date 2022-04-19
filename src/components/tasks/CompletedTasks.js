@@ -13,7 +13,8 @@ export const CompletedTasks = () => {
 
 //----------------------------------------PULLS THE CURRENT USER ID FROM SESSION STORAGE-------------------------------------------------//
 
-let currentUser = parseInt(sessionStorage.getItem("nutshell_user", JSON.stringify()))
+let tmp = JSON.parse(sessionStorage.getItem("nutshell_user"));
+let currentUser = tmp.id;
 
 //----------------------------------------DEFINE navigate AS useNavigate FOR FUTURE USE--------------------------------------------------//  
 
@@ -33,7 +34,6 @@ let currentUser = parseInt(sessionStorage.getItem("nutshell_user", JSON.stringif
     return(filteredByComplete)
   }
 
-  
 
 //-----------------------------------POPULATE EMPTY TASKS ARRAY WITH OBJECTS FROM THE API----------------------------------------------//
 
