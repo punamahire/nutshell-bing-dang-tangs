@@ -48,3 +48,9 @@ main {
 a {
     text-decoration: none !important;
 }
+
+.styleFriendEvent {
+    font-style: italic;
+    background-color: cornsilk;
+    padding: 0.5em;
+}

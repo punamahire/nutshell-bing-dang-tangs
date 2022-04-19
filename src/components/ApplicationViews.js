@@ -15,6 +15,7 @@ import { Tasks } from "./tasks/Task.js"
 import { TaskForm } from "./tasks/TaskForm"
 import { TaskEditForm } from "./tasks/TaskEditForm"
 import { CompletedTasks } from "./tasks/CompletedTasks"
+import { Dashboard } from "./dashboard/Dashboard"
 import "./event/EventAddEditForm.css"
 
 
@@ -37,8 +38,6 @@ export const ApplicationViews = ({setAuthUser, isAuthenticated, setIsAuthenticat
         <Route path="/friends" element={<Friends/>} />
         <Route path="/friends/add" element={<FriendForm/>} />
 
-        <Route path="/messages" element={""} />
-
         <Route path="/tasks" element={<Tasks/>} />
         <Route path="/tasks/completed" element={<CompletedTasks/>} />
         <Route path="/tasks/add" element={<TaskForm/>} />
@@ -53,6 +52,7 @@ export const ApplicationViews = ({setAuthUser, isAuthenticated, setIsAuthenticat
       <Route path="/articles/:articleId/edit" element={<ArticleEditForm />} />
       <Route path="/login" element={<Login setAuthUser={setAuthUser}/> }/>
       <Route path="/register" element={<Register/>}/>
+      <Route path="/dashboard" element={<Dashboard/>}/>
     </Routes>
     </>
   )
