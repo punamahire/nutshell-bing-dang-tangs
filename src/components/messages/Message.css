@@ -15,3 +15,7 @@
 .card.other {
     background-color: #C3DBD9;
 }
+
+.card.private {
+    background-color: lightgray;
+}

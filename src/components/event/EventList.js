@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { EventCard } from './EventCard';
 import { getAllEvents, deleteEvent } from '../../modules/EventManager';
-import { getFriendsOfActiveUser } from '../friends/FriendManager'
+import { getFriendsOfActiveUser } from '../../modules/FriendManager'
 import "./EventCard.css"
 
 export const EventList = () => {
