@@ -1,0 +1,135 @@
+{
+  "users": [
+    {
+      "email": "punam@nutshell.com",
+      "name": "Punam Ahire",
+      "id": 1
+    },
+    {
+      "email": "amy@nutshell.com",
+      "name": "Amy Green",
+      "id": 2
+    },
+    {
+      "email": "mike@nutshell.com",
+      "name": "Mike Cann",
+      "id": 3
+    },
+    {
+      "email": "sonia@nutshell.com",
+      "name": "Sonia Mitchell",
+      "id": 4
+    }
+  ],
+  "articles": [
+    {
+      "userId": 2,
+      "url": "https://www.hcn.org/articles/energy-industry-redlined-neighborhoods-have-double-the-oil-and-gas-wells",
+      "title": "Article 1",
+      "synopsis": "check this out",
+      "timestamp": "2022-04-15T18:58:54.165Z",
+      "id": 1
+    }
+  ],
+  "messages": [
+    {
+      "text": "hi, whats up?",
+      "receiverId": 0,
+      "userId": 2,
+      "timestamp": "2022-04-18T15:07:41.292Z",
+      "isPrivate": false,
+      "id": 1
+    },
+    {
+      "text": "Hey, gm",
+      "receiverId": 0,
+      "userId": 1,
+      "timestamp": "2022-04-18T15:08:58.857Z",
+      "isPrivate": false,
+      "id": 2
+    }
+  ],
+  "events": [
+    {
+      "name": "Easter Egg Hunt 2022",
+      "date": "2022-04-20T14:00",
+      "location": "Nashville",
+      "userId": 2,
+      "id": 1
+    },
+    {
+      "name": "Jazz Night",
+      "date": "2022-05-15T21:00:00.910",
+      "location": "Charlotte",
+      "userId": 3,
+      "id": 6
+    },
+    {
+      "name": "Some Event",
+      "date": "2022-04-18T15:45:00.100",
+      "location": "San Jose",
+      "userId": 1,
+      "id": 7
+    },
+    {
+      "name": "Eva's B'day",
+      "date": "2022-04-20T17:30:00.466",
+      "location": "Texas",
+      "userId": 2,
+      "id": 8
+    },
+    {
+      "name": "Tea Party",
+      "date": "2022-04-19T07:30:00.701",
+      "location": "Knoxville",
+      "userId": 1,
+      "id": 9
+    },
+    {
+      "name": "Friday Night Musical",
+      "date": "2022-04-22T19:30:38.094",
+      "location": "Washington DC",
+      "userId": 3,
+      "id": 10
+    }
+  ],
+  "tasks": [
+    {
+      "name": "asdfasdfsad",
+      "date": "2022-04-16",
+      "isComplete": false,
+      "userId": 4,
+      "id": 1
+    }
+  ],
+  "friends": [
+    {
+      "name": "Amy Green",
+      "email": "amy@nutshell.com",
+      "theirId": 2,
+      "userId": 1,
+      "id": 1
+    },
+    {
+      "name": "Punam Ahire",
+      "email": "punam@nutshell.com",
+      "theirId": 1,
+      "userId": 2,
+      "id": 2
+    },
+    {
+      "name": "Punam Ahire",
+      "email": "punam@nutshell.com",
+      "theirId": 1,
+      "userId": 3,
+      "id": 3
+    },
+    {
+      "name": "Mike Cann",
+      "email": "mike@nutshell.com",
+      "theirId": 3,
+      "userId": 1,
+      "id": 4
+    }
+  ]
+}
