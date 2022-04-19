@@ -6,9 +6,6 @@ export const ArticleCard = ({ article, handleDeleteArticle }) => {
   
   let tmp = JSON.parse(sessionStorage.getItem("nutshell_user"));
   let currentUserId = tmp.id;
-  
-  console.log(article.userId)
-  console.log(currentUserId)
 
   return (
       <div className={article.userId != currentUserId ? "styleFriendEventCardArticle" : "styleYourEventCardArticle"}>
