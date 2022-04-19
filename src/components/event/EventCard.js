@@ -23,11 +23,13 @@ export const EventCard = ({ singleEvent, handleDeleteEvent }) => {
     return (
       <div className={singleEvent.userId !== activeUser.id ? "styleFriendEventCard" : "styleYourEventCard"}>
         <div className={singleEvent.userId !== activeUser.id ? "styleFriendEvent" : ""}>
+          
           {currentUserId === singleEvent.userId
               ? <p><i>your event</i></p>
 
               : <p><i>{singleEvent.user.name}</i></p>
             } 
+
           <h3><span className="card-eventname">
             {singleEvent.name}
           </span></h3>
