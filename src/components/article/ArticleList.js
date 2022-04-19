@@ -22,7 +22,7 @@ export const ArticleList = () => {
 
         let ArticlesList = []
        
-        return getAllArticles().then(articlesFromAPI => {
+        getAllArticles().then(articlesFromAPI => {
 
             console.log(articlesFromAPI)
 
