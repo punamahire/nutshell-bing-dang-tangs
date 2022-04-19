@@ -3,7 +3,7 @@ import { settings } from "../Settings.js"
 const remoteURL = "http://localhost:8088"
 
 export const getAllEvents = () => {
-    return fetch(`${remoteURL}/events?_sort=date`)
+    return fetch(`${remoteURL}/events?_sort=date&_expand=user`)
     .then(res => res.json())
 }
 

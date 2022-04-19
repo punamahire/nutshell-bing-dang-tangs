@@ -12,6 +12,12 @@ export const ArticleCard = ({ article, handleDeleteArticle }) => {
         <div className="article-card-content">
 
             {currentUserId === article.userId
+              ? <p><i>your article</i></p>
+
+              : <p><i>{article.user.name}</i></p>
+            } 
+
+            {currentUserId === article.userId
             ? <h3><span className="article-title">
                 {article.title}
               </span></h3>
