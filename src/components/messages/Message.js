@@ -30,7 +30,12 @@ export const Message = ({ messageObj, user, handleDelete }) => {
 
     const saveEdit = (messageText) => {
         let tmp = { ...message }
-        tmp.text = messageText;
+        if (isPrivateMessage) {
+            tmp.text = `@${privateMessageRecipient} ${messageText}`
+        } else {
+            tmp.text = messageText;
+        }
+        setMessage(tmp)
         // Update database
         UpdateMessage(tmp)
         .then(response => {
