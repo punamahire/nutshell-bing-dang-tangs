@@ -17,7 +17,7 @@ export const ArticleEditForm = () => {
     setArticle(stateToChange);
   };
 
-  const ClickCancel = (event) => {
+  const ClickCancel = () => {
     navigate("/articles")
 }
 

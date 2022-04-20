@@ -3,7 +3,7 @@ import { settings } from "../Settings.js"
 const remoteURL = "http://localhost:8088"
 
 export const getAllEvents = () => {
-    return fetch(`${remoteURL}/events?_sort=date`)
+    return fetch(`${remoteURL}/events?_sort=date&_expand=user`)
     .then(res => res.json())
 }
 
@@ -13,6 +13,7 @@ export const getEventById = (eventId) => {
 }
 
 export const deleteEvent = id => {
+    console.log("inside deleteEvent", id)
     return fetch(`${remoteURL}/events/${id}`, {
       method: "DELETE"
     }).then(result => result.json())

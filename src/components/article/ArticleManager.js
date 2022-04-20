@@ -6,7 +6,7 @@ export const getArticleById = (articleId) => {
 }
 
 export const getAllArticles = () => {
-  return fetch(`${remoteURL}/articles?_sort=timestamp&_order=desc`)
+  return fetch(`${remoteURL}/articles?_sort=timestamp&_order=desc&_expand=user`)
   .then(res => res.json())
 }
 
@@ -35,3 +35,12 @@ export const updateArticle  = (editedArticle) => {
 		body: JSON.stringify(editedArticle)
 	}).then(data => data.json());
 }
+
+export const getAllFriends = () => {
+  return fetch (`${remoteURL}/friends`)
+    .then(response => response.json())
+}
+
+
+
+

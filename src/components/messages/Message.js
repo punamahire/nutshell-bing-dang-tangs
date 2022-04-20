@@ -1,6 +1,9 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useState, useRef } from "react";
 import { Col, Button, Card } from "react-bootstrap"
 import { UpdateMessage } from "../../modules/MessageManager";
+import { useNavigate } from "react-router-dom";
+import { getUserById, addFriend, getFriendsOfActiveUser } from "../../modules/FriendManager"
+// import { Modal } from '../../components/Modal'
 import "./Message.css"
 import { MessageEdit } from "./MessageEdit";
 
@@ -14,6 +17,10 @@ export const Message = ({ messageObj, user, handleDelete }) => {
     const [isPrivateMessage, setIsPrivateMessage] = useState(messageObj.isPrivate);
     const [privateMessageRecipient, setPrivateMessageRecipient] = useState("");
     const [message, setMessage] = useState(messageObj);
+
+    const navigate = useNavigate("")
+
+    const activeUser = JSON.parse(sessionStorage.getItem("nutshell_user"))
 
     const deleteWrapper = (messageId) => {
         setIsDeleting(true);
@@ -41,7 +48,42 @@ export const Message = ({ messageObj, user, handleDelete }) => {
         .then(response => {
             setMessage(response)
             setIsEditable(false)
-        }); // Should set current message to updated value and rerender
+        }); 
+    }
+        
+    // Should set current message to updated value and rerender
+    // When the user clicks on another user's name in public chat
+    // he should be able to add that user as a friend
+    const makeFriendFromChat = () => {
+
+        const wantToBeFriendsWith = window.confirm(`Do you want to add ${messageTitle} as a friend?`);
+
+        if (wantToBeFriendsWith) {
+
+            let newFriend = {
+                name: messageObj.user.name,
+                email: messageObj.user.email,
+                theirId: messageObj.user.id,
+                userId: activeUser.id,
+            }
+            
+            // don't add if the user is already a friend
+            let isAlreadyFriend;
+            getFriendsOfActiveUser(activeUser.id).then(friends => {
+                
+                isAlreadyFriend = friends.some(f => (f.theirId === messageObj.user.id));
+
+                if (!isAlreadyFriend) {
+                    addFriend(newFriend).then(addedFriend => {
+                        navigate('/friends')
+                    })
+                }
+                else {
+                    window.alert(`${messageObj.user.name} is already a friend.`)
+                }
+            })
+        }    
+        
     }
 
     // Format the title
@@ -92,7 +134,7 @@ export const Message = ({ messageObj, user, handleDelete }) => {
                     className={messageClass}
                 >
                     <Card.Body>
-                        <Card.Subtitle>{messageTitle}</Card.Subtitle>
+                        <Card.Subtitle className="msgTitle" onClick={() => makeFriendFromChat()}>{messageTitle}</Card.Subtitle>
                         <br></br>
                         {isPrivateMessage && isOwnMessage && <Fragment><Card.Subtitle>Private Message to {privateMessageRecipient}</Card.Subtitle><br></br></Fragment>}
                         {!isEditable && <Card.Text>{messageText}</Card.Text>}
