@@ -22,3 +22,14 @@ export const DeleteMessage = (id) => {
     })
         .then(response => response.json())
 }
+
+export const UpdateMessage = (messageObj) => {
+    return fetch(`${remoteURL}/messages/${messageObj.id}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(messageObj)
+    })
+        .then(response => response.json())
+}

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { Button } from "react-bootstrap"
 import { Container, Row, Col } from "react-bootstrap"
 import Form from "react-bootstrap/Form"
-import { getAllFriendsForUserId } from "../../modules/FriendManager"
+import { getFriendsOfActiveUser } from "../../modules/FriendManager"
 import { CreateMessage } from "../../modules/MessageManager"
 import "./NewMessage.css"
 
@@ -13,7 +13,7 @@ export const NewMessage = ({ getMessages, user }) => {
 
     // Load friends list for currently logged in user
     useEffect(() => {
-        getAllFriendsForUserId(user.id)
+        getFriendsOfActiveUser(user.id)
             .then((friends) => {
                 setFriendsList(friends);
             })
