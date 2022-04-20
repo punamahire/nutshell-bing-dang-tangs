@@ -50,3 +50,8 @@ export const getWeatherData = (location, date) => {
     return fetch(`http://api.weatherapi.com/v1/current.json?key=${settings.weatherKey}&q=${location}&aqi=no&dt=${date}`)
     .then(response => response.json())
 }
+
+export const getForecastWeatherData = (location, date) => {
+    return fetch(`http://api.weatherapi.com/v1/forecast.json?key=${settings.weatherKey}&q=${location}&aqi=no&dt=${date}`)
+    .then(response => response.json())
+}
