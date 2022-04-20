@@ -24,6 +24,9 @@ export const Messages = () => {
     }
 
     useEffect(() => {
+        const interval = setInterval(() => {
+            getMessages();
+        }, 5000);
         getMessages();
     }, [])
 
