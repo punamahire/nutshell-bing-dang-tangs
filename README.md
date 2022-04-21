@@ -75,3 +75,10 @@ You will be using [session storage](https://javascript.info/localstorage#session
    * Short paragraphs
    * Bulleted lists
 7. Strive for consistency.
+
+ERD:
+https://dbdiagram.io/d/6260d3431072ae0b6abf5093
+
+Wireframe:
+https://www.figma.com/file/LiXQr7KGTxoneVVJoIPIKv/Untitled?node-id=0%3A1
+
